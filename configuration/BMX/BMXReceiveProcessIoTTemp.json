@@ -1,0 +1,316 @@
+[
+    {
+        "id": "be58e26e.1faca",
+        "type": "ibmiot in",
+        "z": "a60b8a97.0bd088",
+        "authentication": "quickstart",
+        "apiKey": "",
+        "inputType": "evt",
+        "deviceId": "kpedgetobmx20171207",
+        "applicationId": "",
+        "deviceType": "+",
+        "eventType": "+",
+        "commandType": "",
+        "format": "json",
+        "name": "IBM IoT",
+        "service": "quickstart",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": true,
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 90,
+        "y": 100,
+        "wires": [
+            [
+                "c69c0fc3.2a4bf",
+                "ac0456dc.7855e"
+            ]
+        ]
+    },
+    {
+        "id": "c69c0fc3.2a4bf",
+        "type": "debug",
+        "z": "a60b8a97.0bd088",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "payload",
+        "x": 270,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ac0456dc.7855e",
+        "type": "function",
+        "z": "a60b8a97.0bd088",
+        "name": "getTemperature",
+        "func": "return {payload:parseFloat(msg.payload.d.value)};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 280,
+        "y": 180,
+        "wires": [
+            [
+                "496324ba.c81eb4",
+                "b38bf158.48135"
+            ]
+        ]
+    },
+    {
+        "id": "496324ba.c81eb4",
+        "type": "debug",
+        "z": "a60b8a97.0bd088",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 510,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "b38bf158.48135",
+        "type": "switch",
+        "z": "a60b8a97.0bd088",
+        "name": "Classify",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "30",
+                "vt": "str"
+            },
+            {
+                "t": "lte",
+                "v": "45",
+                "vt": "str"
+            },
+            {
+                "t": "gt",
+                "v": "45",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 3,
+        "x": 280,
+        "y": 300,
+        "wires": [
+            [
+                "329f834.5f42efc",
+                "73ad2d84.32d4b4"
+            ],
+            [
+                "5cbdc1b1.89d878",
+                "cde85339.6e98f"
+            ],
+            [
+                "48715687.5744f",
+                "1d2db6c8.fea829"
+            ]
+        ]
+    },
+    {
+        "id": "329f834.5f42efc",
+        "type": "template",
+        "z": "a60b8a97.0bd088",
+        "name": "Green",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Cool: {{payload}} !",
+        "output": "str",
+        "x": 470,
+        "y": 260,
+        "wires": [
+            [
+                "a8662c37.b077b8"
+            ]
+        ]
+    },
+    {
+        "id": "5cbdc1b1.89d878",
+        "type": "template",
+        "z": "a60b8a97.0bd088",
+        "name": "Amber",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Warm: {{payload}} !",
+        "output": "str",
+        "x": 471,
+        "y": 298,
+        "wires": [
+            [
+                "a8662c37.b077b8"
+            ]
+        ]
+    },
+    {
+        "id": "48715687.5744f",
+        "type": "template",
+        "z": "a60b8a97.0bd088",
+        "name": "Red",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Hot: {{payload}} !",
+        "output": "str",
+        "x": 471,
+        "y": 338,
+        "wires": [
+            [
+                "a8662c37.b077b8"
+            ]
+        ]
+    },
+    {
+        "id": "a8662c37.b077b8",
+        "type": "debug",
+        "z": "a60b8a97.0bd088",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 670,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "cb73afe4.516eb8",
+        "type": "comment",
+        "z": "a60b8a97.0bd088",
+        "name": "IoT on IBM BMX - Analytics in Bluemix to Edge",
+        "info": "Analyze data received from edge layer in \nBluemix and return a command of action",
+        "x": 210,
+        "y": 37,
+        "wires": []
+    },
+    {
+        "id": "73ad2d84.32d4b4",
+        "type": "template",
+        "z": "a60b8a97.0bd088",
+        "name": "Green",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Cool",
+        "output": "str",
+        "x": 470,
+        "y": 400,
+        "wires": [
+            [
+                "82404a7.f8acc38",
+                "17420063.a494a8"
+            ]
+        ]
+    },
+    {
+        "id": "cde85339.6e98f",
+        "type": "template",
+        "z": "a60b8a97.0bd088",
+        "name": "Amber",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Warm",
+        "output": "str",
+        "x": 471,
+        "y": 438,
+        "wires": [
+            [
+                "82404a7.f8acc38",
+                "17420063.a494a8"
+            ]
+        ]
+    },
+    {
+        "id": "1d2db6c8.fea829",
+        "type": "template",
+        "z": "a60b8a97.0bd088",
+        "name": "Red",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Hot",
+        "output": "str",
+        "x": 471,
+        "y": 478,
+        "wires": [
+            [
+                "82404a7.f8acc38",
+                "17420063.a494a8"
+            ]
+        ]
+    },
+    {
+        "id": "82404a7.f8acc38",
+        "type": "debug",
+        "z": "a60b8a97.0bd088",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 670,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "17420063.a494a8",
+        "type": "function",
+        "z": "a60b8a97.0bd088",
+        "name": "Action Comand to Edge",
+        "func": "// Create MQTT message in JSON\nvar act;\nif (msg.payload ==\"Hot\")\n   act = \"fanon\";\nelse\n   act = \"fanoff\";\n\nmsg = {\n payload: JSON.stringify(\n {\n d:{\n \"action\" : act}\n }\n )\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 731.36669921875,
+        "y": 548,
+        "wires": [
+            [
+                "6b6a2b30.265b34",
+                "82849ad1.6e6be"
+            ]
+        ]
+    },
+    {
+        "id": "6b6a2b30.265b34",
+        "type": "debug",
+        "z": "a60b8a97.0bd088",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 990,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "82849ad1.6e6be",
+        "type": "ibmiot out",
+        "z": "a60b8a97.0bd088",
+        "authentication": "quickstart",
+        "apiKey": "",
+        "outputType": "evt",
+        "deviceId": "kpbmxtoedge20171207",
+        "deviceType": "0.17.5",
+        "eventCommandType": "action command",
+        "format": "json",
+        "data": "JSON",
+        "qos": 0,
+        "name": "IoT BMX Command to Edge",
+        "service": "quickstart",
+        "x": 1010,
+        "y": 580,
+        "wires": []
+    }
+]
