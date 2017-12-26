@@ -1,0 +1,99 @@
+[
+    {
+        "id": "95b1e818.738bd8",
+        "type": "inject",
+        "z": "582b50ec.ce2268",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "x": 109,
+        "y": 130.5,
+        "wires": [
+            [
+                "8e128d15.a06be8"
+            ]
+        ]
+    },
+    {
+        "id": "8e128d15.a06be8",
+        "type": "exec",
+        "z": "582b50ec.ce2268",
+        "command": "vcgencmd",
+        "addpay": false,
+        "append": "measure_temp",
+        "useSpawn": "",
+        "timer": "",
+        "name": "getCPUtemp",
+        "x": 326,
+        "y": 209,
+        "wires": [
+            [
+                "483a2d3.28ae5d4",
+                "e36fd413.601ef8"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "483a2d3.28ae5d4",
+        "type": "debug",
+        "z": "582b50ec.ce2268",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "payload",
+        "x": 670,
+        "y": 196,
+        "wires": []
+    },
+    {
+        "id": "e36fd413.601ef8",
+        "type": "function",
+        "z": "582b50ec.ce2268",
+        "name": "Temperature",
+        "func": "// Create MQTT message in JSON\nmsg = {\n payload: JSON.stringify(\n {\n d:{\n \"value\" : msg.payload.replace(\"temp=\", \"\").replace(\"\\'C\",\"\").replace(\"\\n\",\"\")}\n }\n )\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 376,
+        "y": 315.5,
+        "wires": [
+            [
+                "483a2d3.28ae5d4",
+                "47e56175.5c90c8"
+            ]
+        ]
+    },
+    {
+        "id": "47e56175.5c90c8",
+        "type": "wiotp out",
+        "z": "582b50ec.ce2268",
+        "authType": "d",
+        "qs": "true",
+        "qsDeviceId": "kpedgetobmx20171207",
+        "deviceKey": "",
+        "deviceType": "",
+        "deviceId": "",
+        "event": "event",
+        "format": "json",
+        "qos": "",
+        "name": "",
+        "x": 659,
+        "y": 314,
+        "wires": []
+    },
+    {
+        "id": "b0b5b4dd.2c35d8",
+        "type": "comment",
+        "z": "582b50ec.ce2268",
+        "name": "IoT on Edge - Sensor data to Bluemix",
+        "info": "Collect Sensor data and send to IBM Bluemix",
+        "x": 163,
+        "y": 69,
+        "wires": []
+    }
+]

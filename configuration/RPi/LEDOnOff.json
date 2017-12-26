@@ -1,0 +1,67 @@
+[
+    {
+        "id": "e2527403.a3ad9",
+        "type": "rpi-gpio out",
+        "z": "45ff02b1.ba00fc",
+        "name": "Red - LED",
+        "pin": "11",
+        "set": true,
+        "level": "0",
+        "out": "out",
+        "x": 646.7666320800781,
+        "y": 254.46665954589844,
+        "wires": []
+    },
+    {
+        "id": "38a89cec.276ac4",
+        "type": "inject",
+        "z": "45ff02b1.ba00fc",
+        "name": "On",
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 177.76666259765625,
+        "y": 192.01666259765625,
+        "wires": [
+            [
+                "e2527403.a3ad9",
+                "2e89b10b.e88696"
+            ]
+        ]
+    },
+    {
+        "id": "99d1fddc.642fb8",
+        "type": "inject",
+        "z": "45ff02b1.ba00fc",
+        "name": "Off",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 183.88333129882812,
+        "y": 296.8833312988281,
+        "wires": [
+            [
+                "e2527403.a3ad9",
+                "2e89b10b.e88696"
+            ]
+        ]
+    },
+    {
+        "id": "2e89b10b.e88696",
+        "type": "debug",
+        "z": "45ff02b1.ba00fc",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 633.7666320800781,
+        "y": 132.5500030517578,
+        "wires": []
+    }
+]

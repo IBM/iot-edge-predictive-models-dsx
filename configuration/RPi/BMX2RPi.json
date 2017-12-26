@@ -1,0 +1,188 @@
+[
+    {
+        "id": "d4755d28.f93438",
+        "type": "comment",
+        "z": "a34917aa.b0ba6",
+        "name": "IoT on Edge - Receive command from Bluemix",
+        "info": "Receive command from Bluemix and \ninitiate Action",
+        "x": 210,
+        "y": 53,
+        "wires": []
+    },
+    {
+        "id": "121333e0.a71ef4",
+        "type": "ibmiot in",
+        "z": "a34917aa.b0ba6",
+        "authentication": "quickstart",
+        "apiKey": "325cb44c.cda34c",
+        "inputType": "evt",
+        "deviceId": "kpbmxtoedge20171207",
+        "applicationId": "",
+        "deviceType": "+",
+        "eventType": "+",
+        "commandType": "",
+        "format": "json",
+        "name": "Receive IBM IoT BMX command to Edge",
+        "service": "quickstart",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": true,
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 205,
+        "y": 126,
+        "wires": [
+            [
+                "7d925507.4cd9fc",
+                "f2672dcf.f28f08"
+            ]
+        ]
+    },
+    {
+        "id": "7d925507.4cd9fc",
+        "type": "debug",
+        "z": "a34917aa.b0ba6",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 557,
+        "y": 119,
+        "wires": []
+    },
+    {
+        "id": "f2672dcf.f28f08",
+        "type": "function",
+        "z": "a34917aa.b0ba6",
+        "name": "getAction",
+        "func": "return {payload:msg.payload.d.action};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 139,
+        "y": 217,
+        "wires": [
+            [
+                "4b9c00bb.04c71",
+                "d3b90e66.320688"
+            ]
+        ]
+    },
+    {
+        "id": "4b9c00bb.04c71",
+        "type": "switch",
+        "z": "a34917aa.b0ba6",
+        "name": "Read Command",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "fanon",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 287.76666259765625,
+        "y": 327.23333740234375,
+        "wires": [
+            [
+                "16c8b586.568b72"
+            ],
+            [
+                "80a2f35b.90f9b"
+            ]
+        ]
+    },
+    {
+        "id": "16c8b586.568b72",
+        "type": "template",
+        "z": "a34917aa.b0ba6",
+        "name": "On",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "1",
+        "x": 510.7666320800781,
+        "y": 292.3166809082031,
+        "wires": [
+            [
+                "55a023b9.11de54",
+                "ccabdca6.66545"
+            ]
+        ]
+    },
+    {
+        "id": "80a2f35b.90f9b",
+        "type": "template",
+        "z": "a34917aa.b0ba6",
+        "name": "Off",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "0",
+        "x": 512.8833312988281,
+        "y": 351.8833312988281,
+        "wires": [
+            [
+                "55a023b9.11de54",
+                "ccabdca6.66545"
+            ]
+        ]
+    },
+    {
+        "id": "55a023b9.11de54",
+        "type": "debug",
+        "z": "a34917aa.b0ba6",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 727.88330078125,
+        "y": 276.8833312988281,
+        "wires": []
+    },
+    {
+        "id": "d3b90e66.320688",
+        "type": "debug",
+        "z": "a34917aa.b0ba6",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 612.88330078125,
+        "y": 200.88333129882812,
+        "wires": []
+    },
+    {
+        "id": "ccabdca6.66545",
+        "type": "rpi-gpio out",
+        "z": "a34917aa.b0ba6",
+        "name": "Red - LED",
+        "pin": "11",
+        "set": true,
+        "level": "0",
+        "out": "out",
+        "x": 755.88330078125,
+        "y": 395.8833312988281,
+        "wires": []
+    },
+    {
+        "id": "325cb44c.cda34c",
+        "type": "ibmiot",
+        "z": "",
+        "name": "CarKey",
+        "keepalive": "60",
+        "domain": "",
+        "cleansession": true,
+        "appId": "carsim",
+        "shared": false
+    }
+]
