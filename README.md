@@ -138,12 +138,12 @@ This will create a second flow "BMX2RPi" in a second tab. Leave this openas well
   
 ## 6.3	User configures Emitter,Receiver Node-RED flows in Raspberry Pi  
 
-In the flow “Rpi2BMX”,set the Device ID in the “event” IoT output node to “kpedgetobmx20171207”  
+* In the flow “Rpi2BMX”,set the Device ID in the “event” IoT output node to “kpedgetobmx20171207”  
 
-In “BMX2RPi” flow, set the “Device ID” in the “Receive IBM IoT BMX command to Edge” node to “kpbmxtoedge20171207”  
+* In “BMX2RPi” flow, set the “Device ID” in the “Receive IBM IoT BMX command to Edge” node to “kpbmxtoedge20171207”  
 
 Make a note of the above 2 Device IDs  
-Note that, this ID must be the same as the Device ID that will be set later in Node–RED flow in IBM Cloud  
+You will need them later in Node–RED flow in IBM Cloud  
   
 ## 6.4	User signs up for IBM Internet of Things Starter service on IBM Cloud  
 
@@ -154,6 +154,7 @@ Note that, this ID must be the same as the Device ID that will be set later in N
 ![png](doc/images/iea_nodered_bmx.png)  
   
 * Fill in the details in the Node-RED service creation page  
+
 ![png](doc/images/iea_nodered_bmx_form.png)   
   
 * Select the 30 days trial plan and click “Create”  
@@ -166,9 +167,11 @@ Note that, this ID must be the same as the Device ID that will be set later in N
 * Enter a UserID and password and make a note of it. You will need it later when you relogin and work on your  
   Node-RED flows.  
 * In the next page, you will be provided with options for browsing “Available Bluemix nodes”.  
-* Select “node-red-contrib-ibm-wiotp-device-ops”and click “Next”  
 
 ![png](doc/images/iea_nodered_bmx_iotp.png)   
+
+* Select “node-red-contrib-ibm-wiotp-device-ops”and click “Next”  
+
 ![png](doc/images/iea_nodered_bmx_edlaunch.png)   
 
 * Click on “Go to Node-RED flow editor”. You will be presented with a blank Node-RED flow tab   
@@ -182,28 +185,29 @@ in the git repo.
 
 
 ## 6.5	User imports Node-RED flows in IBM IoT Cloud service  
-Import  the Node-RED flow  “BMXReceiveIoTTemp” from [BMXReceiveProcessIoTTemp.json](/configuration/BMX/BMXReceiveProcessIoTTemp.json)
+* Import  the Node-RED flow  “BMXReceiveIoTTemp” from [BMXReceiveProcessIoTTemp.json](/configuration/BMX/BMXReceiveProcessIoTTemp.json)
  
 ![png](doc/images/iea_bmxreceiveiottemp_bmx_flow.png)   
   
 
 ## 6.6	User configures Emitter Node-RED flows in IBM IoT Cloud service  
 
-Set the “Device ID” in the “ibmiot” node to “kpedgetobmx20171207”   
-This is the node that receives data from Raspberry Pi "Emitter" flow.  
+* Set the “Device ID” in the “ibmiot” node to “kpedgetobmx20171207”   
+  This is the node that receives data from Raspberry Pi "Emitter" flow.  
 
 ![png](doc/images/iea_bmxreceiveiottemp_bmx_devid.png)    
 
-Set the “Device ID” in the “IoT BMX Command to Edge” node to “kpbmxtoedge20171207”   
-This is the node that sends data / commands back to Raspberry Pi "Collector" flow.  
+* Set the “Device ID” in the “IoT BMX Command to Edge” node to “kpbmxtoedge20171207”   
+  This is the node that sends data / commands back to Raspberry Pi "Collector" flow.  
   
 # 7	Run the Node-RED flows and View the Results
   
-Note: Steps on how to Run the flow is not explained as these are basics covered in the Pre-requisites.  
+_Note: Steps on how to Run the flow is not explained in detail as these are basics covered in the Pre-requisites._  
   
 * On RPi: Inject In ``RPi2BMX`` flow and see results in debug screen  
   ![png](doc/images/iea_rpi2bmx_results.png)   
   You must be able to see the CPU temperature in 'C output in the debug section.   
+  
 * On BMX: Inject in ``BMXReceiveIoTTemp`` flow and see results in debug screen  
   ![png](doc/images/iea_bmxreceiveiottemp_results.png)   
   You must be able to see the CPU temperature values received from Raspberry Pi.  
@@ -211,20 +215,22 @@ Note: Steps on how to Run the flow is not explained as these are basics covered 
   depending on the temperature values received.  
   The logic for doing the same is coded in the flow, which you can explore yourself. 
     
-  __Note: This logic can be replaced with a complex algorithm that can predict an upcoming failure condition  
+  _Note: This logic can be replaced with a complex algorithm that can predict an upcoming failure condition  
   The focus of this Code Pattern is to show the means for implementing the flow and not in the logic itself  
   and so the complexity of the flows are kept to a minimal.  
-  Users are encouraged to experiement with coding their own logic that suits their specific requirements.__ 
+  Users are encouraged to experiement with coding their own logic that suits their specific requirements._  
+  
 * On RPi: Inject ``BMX2RPi`` flow and see results in debug screen  
   ![png](doc/images/iea_bmx2rpi_results.png)   
   In the debug window, you must be able to see the commands received from the IBM Cloud - Node-RED flow  
+  
 * Confirm the ouputs  
 
 # 8	Troubleshooting  
 See [Debugging.md](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/DEBUGGING.md)  
   
 # 9	License  
-[Apache 2.0](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/LICENSE)  
+See [Apache 2.0](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/LICENSE)  
     
 # 10	Further enhancements  
 
@@ -235,4 +241,3 @@ hardware and knowledge of basic electronics
 * Inputs from Raspberry Pi GPIO pins can be used for reading temperature from a external Temperature sensor attached  
 * Outputs to Raspberry Pi GPIO pins can be used for triggering action by external actuators  
 
-  
