@@ -1,9 +1,9 @@
 # 1 Edge communication using Predictive and Change Point models in Watson IoT and IBM DSX (IoT)
 
-Internet of Things (IoT) have evolved tremendously in all spheres of our daily lives like Industrial  
+Internet of Things (IoT) have evolved tremendously in all spheres of our lives like Industrial  
 applications, Social interactions, Remote management of facilities and equipment to name a few.  
 
-In general application areas, IoT data collected mainly by use of Sensors can be for Monitoring as  
+In general application areas, IoT data collected by Sensors can be used for monitoring as  
 well as predicting the outcomes. If any deviation from the norm is detected, corrective action can be  
 prescribed either manually or by an automated process. Such actions may come out of Rule based anomaly  
 detection or a Statistical Change point detection or a Predictive model that predicts a faulty  
@@ -15,12 +15,12 @@ The Process steps for applying Analytics on IoT data can be broadly classified a
 3.	Predicting Equipment failure using IoT Sensor data
 4.	Sending Decisions based on Analytics insights to the edge for Automated Action
 
-This IBM Code Pattern is a composite pattern that brings together the end to end flow of IoT Analytics systems.
+*This IBM Code Pattern is a composite pattern that brings together the end to end flow of IoT Analytics systems.*  
+Specifically focussing on points 2,3,4 above.  
 
 ![png](doc/images/iea_aainiot_arch.png)  
-Image courtesy from blog [Advanced Analytics Applications in IoT](https://developer.ibm.com/code/?p=25889)
-
-
+Image from blog [Advanced Analytics Applications in IoT](https://developer.ibm.com/code/?p=25889)  
+  
 While Rule based anomaly detection uses point in time data, which may be sudden spike in some parameters  
 with a possibility of getting back to normal ranges, statistical Change point detection can differentiate  
 and identify a Change in operating parameters that might not return to normal by itself. And so a more  
@@ -46,11 +46,11 @@ sophisticated Predictive models can be built that can pinpoint upcoming failure 
 equipment or subsystem.  
   
 Once an anomaly is detected, a prescriptive action needs to be taken.  
-This journey in specific covers, “Detecting the need for any corrective action and then  
-communicating “Decisions based on Analytics insights to the edge for Automated Action”  
+This journey in specific covers, **Detecting the need for any corrective action and then  
+communicating Decisions based on Analytics insights to the edge for Automated Action**  
 
 
-#### Prerequisites:  
+## Prerequisites:  
 Users who want to implement this IBM Code pattern are expected to have the below knowledge as  
 Pre-requisites. Before proceeding, it is strongly suggested to familiarize yourself with the  
 below pre-requisites.  
@@ -66,15 +66,16 @@ below pre-requisites.
   
 
 # 2 Flow
-![png](doc/images/iea_arch_flow.png)
+![png](doc/images/iea_arch_flow.png)  
 
-1.	Temperature Data is read from a sensor attached to an edge device, in our case a Raspberry Pi  
-2.	.json files will be imported to create the Node-RED flows in the Edge layer  
-3.	Node-Red running on Raspberry Pi will collect the Sensor data and dispatches to the  
-    IBM IoT service in Cloud. Node-RDE flows in Raspberry Pi will also receive commands for  
-	action from IoT platform in IBM Cloud and triggers action  
-4.	IBM Internet of Things (IoT) platform running on IBM Cloud will receive the data from Raspberry Pi  
-    and Analyzes the data to detect if any action needs to be taken at the edge  
+1.	Temperature Data is read from a sensor attached to an edge device, in our case CPU temperature  
+    sensor in Raspberry Pi  
+2.	.json files are imported to create 2 Node-RED flows in Raspberry Pi or the Edge layer  
+3.	Node-Red ``Emitter`` running on Raspberry Pi will collect the CPU temperature sensor data and dispatch it to  
+    IBM IoT service in Cloud. Node-RED ``Collector`` flows in Raspberry Pi will also receive commands for  
+	action from IoT platform in IBM Cloud and initiates action  
+4.	Node-RED flows running on IBM Internet of Things (IoT) platform in IBM Cloud will receive the data from  
+    Raspberry Pi and Analyzes the data to detect if any action needs to be taken at the edge  
 5.	.json files will be imported to create the Node-RED flows in the IBM Cloud – IoT service  
 6.	Node-RED flows running on IBM IoT platform will once again run the logic on the data and then  
     translate it into a action and communicate the action to be taken back to the edge layer, Raspberry Pi  
@@ -99,9 +100,8 @@ below pre-requisites.
   order to extract knowledge and insights.  
 
 # 5	Watch the Video  
-* [Video](Video - WIP)
- 
-
+* [Video](Video - WIP)  
+  
 # 6	Steps  
 
 1.	User sets up Node-RED in Raspberry Pi and connect to Network
@@ -123,53 +123,59 @@ Follow this [Video]( https://www.youtube.com/watch?v=nlvAFwifU9c&feature=youtu.b
 6.	On your laptop /desktop web browser, open the Node-RED web editor running on Raspberry by entering the URL  
     ”raspberrypi ip address:1880”. In the example shown below the IP address for Raspberry Pi is 192.168.1.26.  
 	You can check your WiFi router (or horspot) configuration for the finding the Raspberry Pi IP address.  
-
+  
 ## 6.2  User imports Node-RED flows in Raspberry Pi  
 
 Import “Emitter” Node-RED flow “Rpi2BMX” in Raspberry Pi from [RPi2BMX.json](/configuration/RPi/RPi2BMX.json)  
 
 ![png](doc/images/iea_rpi2bmx_flow.png)  
-  
-Set the Device ID in the “event” IoT output node to “kpedgetobmx20171207”  
-  
+Leave the tab that shows this flow open.   
+ 
 Import “Collector” Node-RED flow “BMX2RPi” on Raspberry Pi from [BMX2RPi.json](/configuration/RPi/BMX2RPi.json)  
 
 ![png](doc/images/iea_bmx2rpi_flow.png)  
+This will create a second flow "BMX2RPi" in a second tab. Leave this openas well.  
   
 ## 6.3	User configures Emitter,Receiver Node-RED flows in Raspberry Pi  
 
+In the flow “Rpi2BMX”,set the Device ID in the “event” IoT output node to “kpedgetobmx20171207”  
+
 In “BMX2RPi” flow, set the “Device ID” in the “Receive IBM IoT BMX command to Edge” node to “kpbmxtoedge20171207”  
+
+Make a note of the above 2 Device IDs  
 Note that, this ID must be the same as the Device ID that will be set later in Node–RED flow in IBM Cloud  
   
 ## 6.4	User signs up for IBM Internet of Things Starter service on IBM Cloud  
 
-Go to [IBM Cloud Catalog]( https://console.bluemix.net/catalog/) and type “node-red” in the search box.  
-This displays a list of components that match the search criteria in IBM Cloud.  
-Select the “Node-RED starter” Service  
+* Go to [IBM Cloud Catalog]( https://console.bluemix.net/catalog/) and type “node-red” in the search box.  
+* This displays a list of components that match the search criteria in IBM Cloud.  
+* Select the “Node-RED starter” Service  
 
 ![png](doc/images/iea_nodered_bmx.png)  
   
-Fill in the details in the Node-RED service creation page  
+* Fill in the details in the Node-RED service creation page  
 ![png](doc/images/iea_nodered_bmx_form.png)   
   
-Select the 30 days trial plan and click “Create”  
+* Select the 30 days trial plan and click “Create”  
 
 ![png](doc/images/iea_nodered_bmx_plan.png)    
-The Node-RED service will be created under “Cloud Foundry App” and the service will be started by default.  
-Click on “Visit App URL” in the Service status page.  
-You will be asked for a User ID and password. This is for accessing the Node-RED flows that will be created by you in future.  
-Enter a UserID and password and make a note of it. You will need it later when you relogin and work on your Node-RED flows.  
-In the next page, you will be provided with options for browsing “Available Bluemix nodes”.  
-Select “node-red-contrib-ibm-wiotp-device-ops”and click “Next”  
+* The Node-RED service will be created under “Cloud Foundry App” and the service will be started by default.  
+* Click on “Visit App URL” in the Service status page.  
+* You will be asked for a User ID and password. This is for accessing the Node-RED flows that will be created  
+  by you in future.  
+* Enter a UserID and password and make a note of it. You will need it later when you relogin and work on your  
+  Node-RED flows.  
+* In the next page, you will be provided with options for browsing “Available Bluemix nodes”.  
+* Select “node-red-contrib-ibm-wiotp-device-ops”and click “Next”  
 
 ![png](doc/images/iea_nodered_bmx_iotp.png)   
 ![png](doc/images/iea_nodered_bmx_edlaunch.png)   
 
-“Go to Node-RED flow editor”  
-You will be presented with a blank Node-RED flow tab  
+* Click on “Go to Node-RED flow editor”. You will be presented with a blank Node-RED flow tab   
  
 ![png](doc/images/iea_nodered_bmx_blank.png)   
-As a sample trial, drag and drop the input node that says “ibmiot” into the blank tab “Flow 1”.  
+  
+As a trial, drag and drop the input node that says “ibmiot” into the blank tab “Flow 1”.  
 You can see a description of the functions of this node. You can experiment further to get yourself comfortable with  
 the flow. Discard or Save any flow you might have created, we will be using from pre-built flows that are made available  
 in the git repo.  
@@ -183,17 +189,35 @@ Import  the Node-RED flow  “BMXReceiveIoTTemp” from [BMXReceiveProcessIoTTem
 
 ## 6.6	User configures Emitter Node-RED flows in IBM IoT Cloud service  
 
-Set the “Device ID” in the “ibmiot” node to “kpbmxtoedge20171207”   
+Set the “Device ID” in the “ibmiot” node to “kpedgetobmx20171207”   
+This is the node that receives data from Raspberry Pi "Emitter" flow.  
 
 ![png](doc/images/iea_bmxreceiveiottemp_bmx_devid.png)    
+
+Set the “Device ID” in the “IoT BMX Command to Edge” node to “kpbmxtoedge20171207”   
+This is the node that sends data / commands back to Raspberry Pi "Collector" flow.  
   
 # 7	Run the Node-RED flows and View the Results
+  
+Note: Steps on how to Run the flow is not explained as these are basics covered in the Pre-requisites.  
+  
 * On RPi: Inject In ``RPi2BMX`` flow and see results in debug screen  
   ![png](doc/images/iea_rpi2bmx_results.png)   
+  You must be able to see the CPU temperature in 'C output in the debug section.   
 * On BMX: Inject in ``BMXReceiveIoTTemp`` flow and see results in debug screen  
   ![png](doc/images/iea_bmxreceiveiottemp_results.png)   
+  You must be able to see the CPU temperature values received from Raspberry Pi.  
+  Also, the flow will analyze this temperature using rules and outputs a command "fanon" or "fanoff"   
+  depending on the temperature values received.  
+  The logic for doing the same is coded in the flow, which you can explore yourself. 
+    
+  __Note: This logic can be replaced with a complex algorithm that can predict an upcoming failure condition  
+  The focus of this Code Pattern is to show the means for implementing the flow and not in the logic itself  
+  and so the complexity of the flows are kept to a minimal.  
+  Users are encouraged to experiement with coding their own logic that suits their specific requirements.__ 
 * On RPi: Inject ``BMX2RPi`` flow and see results in debug screen  
   ![png](doc/images/iea_bmx2rpi_results.png)   
+  In the debug window, you must be able to see the commands received from the IBM Cloud - Node-RED flow  
 * Confirm the ouputs  
 
 # 8	Troubleshooting  
