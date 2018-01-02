@@ -1,4 +1,4 @@
-# 1 Edge communication using Predictive and Change Point models in Watson IoT and IBM DSX (IoT)
+# 1 Edge communication using Predictive and Change Point models in Watson IoT and IBM Data Science Experience (DSX)
 
 Internet of Things (IoT) have evolved tremendously in all spheres of our lives like Industrial  
 applications, Social interactions, Remote management of facilities and equipment to name a few.  
