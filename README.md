@@ -100,7 +100,7 @@ below pre-requisites.
   order to extract knowledge and insights.  
 
 # 5	Watch the Video  
-* [Video](Video - WIP)  
+* [Video](https://youtu.be/2CJcqMPIFaY)  
   
 # 6	Steps  
 
