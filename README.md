@@ -78,7 +78,7 @@ below pre-requisites.
     Raspberry Pi and Analyzes the data to detect if any action needs to be taken at the edge  
 5.	.json files will be imported to create the Node-RED flows in the IBM Cloud – IoT service  
 6.	Node-RED flows running on IBM IoT platform will once again run the logic on the data and then  
-    translate it into a action and communicate the action to be taken back to the edge layer, Raspberry Pi  
+    translate it into an action and communicate the action to be taken back to the edge layer, Raspberry Pi  
 7.	Analytics logic to detecting the action to be taken at the Edge will be embedded in the Node-RED  
     flow in IBM Cloud – IoT service  
   
@@ -106,7 +106,7 @@ below pre-requisites.
 
 1.	User sets up Node-RED in Raspberry Pi and connect to Network
 2.	User imports Node-RED flows in Raspberry Pi
-3.	User configures Emitter,Receiver Node-RED flows in Raspberry Pi
+3.	User configures Emitter, Receiver Node-RED flows in Raspberry Pi
 4.	User signs up for IBM Internet of Things Starter service on IBM Cloud
 5.	User imports Node-RED flows in IBM IoT Cloud service
 6.	User configures Emitter Node-RED flows in IBM IoT Cloud service
@@ -120,9 +120,9 @@ Follow this [Video]( https://www.youtube.com/watch?v=nlvAFwifU9c&feature=youtu.b
 3.	Login to Raspberry Pi from your Laptop using putty or any other SSH  
 4.	Start Node-RED service on Raspberry Pi  
 5.	Start IoT service in Raspberry Pi if not started already  
-6.	On your laptop /desktop web browser, open the Node-RED web editor running on Raspberry by entering the URL  
-    ”raspberrypi ip address:1880”. In the example shown below the IP address for Raspberry Pi is 192.168.1.26.  
-	You can check your WiFi router (or horspot) configuration for the finding the Raspberry Pi IP address.  
+6.	On your laptop / desktop web browser, open the Node-RED web editor running on Raspberry by entering the URL  
+    `raspberrypi ip address:1880`. In the example shown below the IP address for Raspberry Pi is `192.168.1.26`.  
+	You can check your WiFi router (or hotspot) configuration for the finding the Raspberry Pi IP address.  
   
 ## 6.2  User imports Node-RED flows in Raspberry Pi  
 
@@ -134,11 +134,11 @@ Leave the tab that shows this flow open.
 Import “Collector” Node-RED flow “BMX2RPi” on Raspberry Pi from [BMX2RPi.json](/configuration/RPi/BMX2RPi.json)  
 
 ![png](doc/images/iea_bmx2rpi_flow.png)  
-This will create a second flow "BMX2RPi" in a second tab. Leave this openas well.  
+This will create a second flow "BMX2RPi" in a second tab. Leave this open as well.  
   
 ## 6.3	User configures Emitter,Receiver Node-RED flows in Raspberry Pi  
 
-* In the flow “Rpi2BMX”,set the Device ID in the “event” IoT output node to “kpedgetobmx20171207”  
+* In the flow “Rpi2BMX”, set the Device ID in the “event” IoT output node to “kpedgetobmx20171207”  
 
 * In “BMX2RPi” flow, set the “Device ID” in the “Receive IBM IoT BMX command to Edge” node to “kpbmxtoedge20171207”  
 
@@ -157,28 +157,28 @@ You will need them later in Node–RED flow in IBM Cloud
 
 ![png](doc/images/iea_nodered_bmx_form.png)   
   
-* Select the 30 days trial plan and click “Create”  
+* Select the 30 days trial plan and click `Create`  
 
 ![png](doc/images/iea_nodered_bmx_plan.png)    
-* The Node-RED service will be created under “Cloud Foundry App” and the service will be started by default.  
-* Click on “Visit App URL” in the Service status page.  
+* The Node-RED service will be created under `Cloud Foundry App` and the service will be started by default.  
+* Click on `Visit App URL` in the Service status page.  
 * You will be asked for a User ID and password. This is for accessing the Node-RED flows that will be created  
   by you in future.  
 * Enter a UserID and password and make a note of it. You will need it later when you relogin and work on your  
   Node-RED flows.  
-* In the next page, you will be provided with options for browsing “Available Bluemix nodes”.  
+* In the next page, you will be provided with options for browsing `Available Bluemix nodes`.  
 
 ![png](doc/images/iea_nodered_bmx_iotp.png)   
 
-* Select “node-red-contrib-ibm-wiotp-device-ops”and click “Next”  
+* Select `node-red-contrib-ibm-wiotp-device-ops` and click `Next`  
 
 ![png](doc/images/iea_nodered_bmx_edlaunch.png)   
 
-* Click on “Go to Node-RED flow editor”. You will be presented with a blank Node-RED flow tab   
+* Click on `Go to Node-RED flow editor`. You will be presented with a blank Node-RED flow tab   
  
 ![png](doc/images/iea_nodered_bmx_blank.png)   
   
-As a trial, drag and drop the input node that says “ibmiot” into the blank tab “Flow 1”.  
+As a trial, drag and drop the input node that says `ibmiot` into the blank tab `Flow 1`.  
 You can see a description of the functions of this node. You can experiment further to get yourself comfortable with  
 the flow. Discard or Save any flow you might have created, we will be using from pre-built flows that are made available  
 in the git repo.  
@@ -204,21 +204,21 @@ in the git repo.
   
 _Note: Steps on how to Run the flow is not explained in detail as these are basics covered in the Pre-requisites._  
   
-* On RPi: Inject In ``RPi2BMX`` flow and see results in debug screen  
+* On RPi: Inject in ``RPi2BMX`` flow and see results in debug screen  
   ![png](doc/images/iea_rpi2bmx_results.png)   
-  You must be able to see the CPU temperature in 'C output in the debug section.   
+  You must be able to see the CPU temperature in 'C output in the debug section.   
   
 * On BMX: Inject in ``BMXReceiveIoTTemp`` flow and see results in debug screen  
   ![png](doc/images/iea_bmxreceiveiottemp_results.png)   
   You must be able to see the CPU temperature values received from Raspberry Pi.  
-  Also, the flow will analyze this temperature using rules and outputs a command "fanon" or "fanoff"   
+  Also, the flow will analyze this temperature using rules and outputs a command `fanon` or `fanoff`   
   depending on the temperature values received.  
   The logic for doing the same is coded in the flow, which you can explore yourself. 
     
   _Note: This logic can be replaced with a complex algorithm that can predict an upcoming failure condition  
   The focus of this Code Pattern is to show the means for implementing the flow and not in the logic itself  
   and so the complexity of the flows are kept to a minimal.  
-  Users are encouraged to experiement with coding their own logic that suits their specific requirements._  
+  Users are encouraged to experiment with coding their own logic that suits their specific requirements._  
   
 * On RPi: Inject ``BMX2RPi`` flow and see results in debug screen  
   ![png](doc/images/iea_bmx2rpi_results.png)   
