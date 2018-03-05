@@ -236,7 +236,7 @@ See [Apache 2.0](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/mast
 
 The following areas are suggested as further enhancement areas for a User to explore by self.  
 These are consciously been omitted from this IBM Code pattern as thse will require additional  
-hardware and knowledge of basic electronics   
+hardware and knowledge of basic electronics  
 
 * Inputs from Raspberry Pi GPIO pins can be used for reading temperature from a external Temperature sensor attached  
 * Outputs to Raspberry Pi GPIO pins can be used for triggering action by external actuators  
