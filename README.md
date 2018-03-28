@@ -104,7 +104,7 @@ below pre-requisites.
   
 # 6	Steps  
 
-1.	User sets up Node-RED in Raspberry Pi and connect to Network
+1.	[User sets up Node-RED in Raspberry Pi and connect to Network](#6.1-user-sets-up-node-red-in-raspberry-pi-and-connect-to-network)
 2.	User imports Node-RED flows in Raspberry Pi
 3.	User configures Emitter, Receiver Node-RED flows in Raspberry Pi
 4.	User signs up for IBM Internet of Things Starter service on IBM Cloud
