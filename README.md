@@ -110,8 +110,8 @@ below pre-requisites.
 4.	[User signs up for IBM Internet of Things Starter service on IBM Cloud](#64-user-signs-up-for-ibm-internet-of-things-starter-service-on-ibm-cloud)
 5.	[User imports Node-RED flows in IBM IoT Cloud service](#65-user-imports-node-red-flows-in-ibm-iot-cloud-service)
 6.	[User configures Emitter Node-RED flows in IBM IoT Cloud service](#66-user-configures-emitter-node-red-flows-in-ibm-iot-cloud-service)
-7.	[User checks the CPU temperature from Raspberry Pi transported to IBM IoT service](#66-user-configures-emitter-node-red-flows-in-ibm-iot-cloud-service)
-8.	[User checks the action received at the Raspberry Pi Edge node from IBM IoT service](#66-user-configures-emitter-node-red-flows-in-ibm-iot-cloud-service)
+7.	[User checks the CPU temperature from Raspberry Pi transported to IBM IoT service](#7-run-the-node-red-flows-and-view-the-results)
+8.	[User checks the action received at the Raspberry Pi Edge node from IBM IoT service](#7-run-the-node-red-flows-and-view-the-results)
 
 <a name="61-user-sets-up-node-red-in-raspberry-pi-and-connect-to-network"></a>  
 ## 6.1	User sets up Node-RED in Raspberry Pi and connect to Network  
@@ -147,6 +147,7 @@ This will create a second flow "BMX2RPi" in a second tab. Leave this open as wel
 
 Make a note of the above 2 Device IDs  
 You will need them later in Node–RED flow in IBM Cloud  
+
 
 <a name="64-user-signs-up-for-ibm-internet-of-things-starter-service-on-ibm-cloud"></a>  
 ## 6.4	User signs up for IBM Internet of Things Starter service on IBM Cloud  
@@ -206,6 +207,7 @@ in the git repo.
 * Set the “Device ID” in the “IoT BMX Command to Edge” node to “kpbmxtoedge20171207”   
   This is the node that sends data / commands back to Raspberry Pi "Collector" flow.  
   
+<a name="7-run-the-node-red-flows-and-view-the-results"></a>  
 # 7	Run the Node-RED flows and View the Results
   
 _Note: Steps on how to Run the flow is not explained in detail as these are basics covered in the Pre-requisites._  
