@@ -111,7 +111,7 @@ below pre-requisites.
 5.	User imports Node-RED flows in IBM IoT Cloud service
 6.	User configures Emitter Node-RED flows in IBM IoT Cloud service
 7.	User checks the CPU temperature from Raspberry Pi transported to IBM IoT service
-8.	[User checks the action received at the Raspberry Pi Edge node from IBM IoT service](#6.6 User configures Emitter Node-RED flows in IBM IoT Cloud service)
+8.	[User checks the action received at the Raspberry Pi Edge node from IBM IoT service](#6.6-user-configures-emitter-node-red-flows-in-ibm-iot-cloud-service)
 
 ## 6.1	User sets up Node-RED in Raspberry Pi and connect to Network  
 Follow this [Video]( https://www.youtube.com/watch?v=nlvAFwifU9c&feature=youtu.be) which will walk you through the below steps.  
