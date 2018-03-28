@@ -106,7 +106,7 @@ below pre-requisites.
 
 1.	[User sets up Node-RED in Raspberry Pi and connect to Network](#6.1-user-sets-up-node-red-in-raspberry-pi-and-connect-to-network)
 2.	[User imports Node-RED flows in Raspberry Pi](#62-user-imports-node-red-flows-in-raspberry-pi)
-3.	[User configures Emitter, Receiver Node-RED flows in Raspberry Pi](#63-user-configures-emitter,receiver-node-red-flows-in-raspberry-pi)
+3.	[User configures Emitter, Receiver Node-RED flows in Raspberry Pi](#63-user-configures-emitter-receiver-node-red-flows-in-rpi)
 4.	[User signs up for IBM Internet of Things Starter service on IBM Cloud](#64-user-signs-up-for-ibm-internet-of-things-starter-service-on-ibm-cloud)
 5.	[User imports Node-RED flows in IBM IoT Cloud service](#65-user-imports-node-red-flows-in-ibm-iot-cloud-service)
 6.	[User configures Emitter Node-RED flows in IBM IoT Cloud service](#66-user-configures-emitter-node-red-flows-in-ibm-iot-cloud-service)
@@ -138,7 +138,7 @@ Import “Collector” Node-RED flow “BMX2RPi” on Raspberry Pi from [BMX2RPi
 ![png](doc/images/iea_bmx2rpi_flow.png)  
 This will create a second flow "BMX2RPi" in a second tab. Leave this open as well.  
 
-<a name="#63-user-configures-emitter,receiver-node-red-flows-in-raspberry-pi"></a>  
+<a name="63-user-configures-emitter-receiver-node-red-flows-in-rpi"></a>  
 ## 6.3	User configures Emitter,Receiver Node-RED flows in Raspberry Pi  
 
 * In the flow “Rpi2BMX”, set the Device ID in the “event” IoT output node to “kpedgetobmx20171207”  
