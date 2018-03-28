@@ -105,14 +105,15 @@ below pre-requisites.
 # 6	Steps  
 
 1.	[User sets up Node-RED in Raspberry Pi and connect to Network](#6.1-user-sets-up-node-red-in-raspberry-pi-and-connect-to-network)
-2.	User imports Node-RED flows in Raspberry Pi
-3.	User configures Emitter, Receiver Node-RED flows in Raspberry Pi
-4.	User signs up for IBM Internet of Things Starter service on IBM Cloud
-5.	User imports Node-RED flows in IBM IoT Cloud service
-6.	User configures Emitter Node-RED flows in IBM IoT Cloud service
-7.	User checks the CPU temperature from Raspberry Pi transported to IBM IoT service
+2.	[User imports Node-RED flows in Raspberry Pi](#62-user-imports-node-red-flows-in-raspberry-pi)
+3.	[User configures Emitter, Receiver Node-RED flows in Raspberry Pi](#63-user-configures-emitter,receiver-node-red-flows-in-raspberry-pi)
+4.	[User signs up for IBM Internet of Things Starter service on IBM Cloud](#64-user-signs-up-for-ibm-internet-of-things-starter-service-on-ibm-cloud)
+5.	[User imports Node-RED flows in IBM IoT Cloud service](#65-user-imports-node-red-flows-in-ibm-iot-cloud-service)
+6.	[User configures Emitter Node-RED flows in IBM IoT Cloud service](#66-user-configures-emitter-node-red-flows-in-ibm-iot-cloud-service)
+7.	[User checks the CPU temperature from Raspberry Pi transported to IBM IoT service](#66-user-configures-emitter-node-red-flows-in-ibm-iot-cloud-service)
 8.	[User checks the action received at the Raspberry Pi Edge node from IBM IoT service](#66-user-configures-emitter-node-red-flows-in-ibm-iot-cloud-service)
 
+<a name="61-user-sets-up-node-red-in-raspberry-pi-and-connect-to-network"></a>  
 ## 6.1	User sets up Node-RED in Raspberry Pi and connect to Network  
 Follow this [Video]( https://www.youtube.com/watch?v=nlvAFwifU9c&feature=youtu.be) which will walk you through the below steps.  
 1.	Setup and Connect Raspberry Pi to Local Wifi Network with Internet  
@@ -123,7 +124,8 @@ Follow this [Video]( https://www.youtube.com/watch?v=nlvAFwifU9c&feature=youtu.b
 6.	On your laptop / desktop web browser, open the Node-RED web editor running on Raspberry by entering the URL  
     `raspberrypi ip address:1880`. In the example shown below the IP address for Raspberry Pi is `192.168.1.26`.  
 	You can check your WiFi router (or hotspot) configuration for the finding the Raspberry Pi IP address.  
-  
+
+<a name="62-user-imports-node-red-flows-in-raspberry-pi"></a>  
 ## 6.2  User imports Node-RED flows in Raspberry Pi  
 
 Import “Emitter” Node-RED flow “Rpi2BMX” in Raspberry Pi from [RPi2BMX.json](/configuration/RPi/RPi2BMX.json)  
@@ -135,7 +137,8 @@ Import “Collector” Node-RED flow “BMX2RPi” on Raspberry Pi from [BMX2RPi
 
 ![png](doc/images/iea_bmx2rpi_flow.png)  
 This will create a second flow "BMX2RPi" in a second tab. Leave this open as well.  
-  
+
+<a name="#63-user-configures-emitter,receiver-node-red-flows-in-raspberry-pi"></a>  
 ## 6.3	User configures Emitter,Receiver Node-RED flows in Raspberry Pi  
 
 * In the flow “Rpi2BMX”, set the Device ID in the “event” IoT output node to “kpedgetobmx20171207”  
@@ -144,7 +147,8 @@ This will create a second flow "BMX2RPi" in a second tab. Leave this open as wel
 
 Make a note of the above 2 Device IDs  
 You will need them later in Node–RED flow in IBM Cloud  
-  
+
+<a name="64-user-signs-up-for-ibm-internet-of-things-starter-service-on-ibm-cloud"></a>  
 ## 6.4	User signs up for IBM Internet of Things Starter service on IBM Cloud  
 
 * Go to [IBM Cloud Catalog]( https://console.bluemix.net/catalog/) and type “node-red” in the search box.  
@@ -184,6 +188,7 @@ the flow. Discard or Save any flow you might have created, we will be using from
 in the git repo.  
 
 
+<a name="65-user-imports-node-red-flows-in-ibm-iot-cloud-service"></a>  
 ## 6.5	User imports Node-RED flows in IBM IoT Cloud service  
 * Import  the Node-RED flow  “BMXReceiveIoTTemp” from [BMXReceiveProcessIoTTemp.json](/configuration/BMX/BMXReceiveProcessIoTTemp.json)
  
