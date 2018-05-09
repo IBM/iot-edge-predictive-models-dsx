@@ -28,8 +28,8 @@ reliable corrective action can be initiated.
 
 The Statistical method and flow for detecting change points in IoT Sensor data and related steps are  
 covered in the IBM Code pattern below:  
-* [Statistical Change point detection - Overview](https://developer.ibm.com/code/journey/detect-change-points-in-iot-sensor-data/)  
-* [Statistical Change point detection - Code and HowTo](https://github.com/IBM/detect-timeseriesdata-change)  
+* [Detect change points in IoT sensor data - Overview](https://developer.ibm.com/code/patterns/detect-change-points-in-iot-sensor-data/)  
+* [Detect change points in IoT sensor data - Code and HowTo](https://github.com/IBM/detect-timeseriesdata-change)  
 
 
 One step further, using Advanced Analytics, predictive models can be built that could predict a failure  
@@ -38,8 +38,8 @@ condition in an equipment or a system like say a Compressor in a refrigeration u
 This approach goes a long way in implementing Predictive maintenance which is more prudent approach   
 than Scheduled Preventive maintenance which is periodic in nature.  
 Predictive Analytics on IoT is covered in the journey below:  
-* [Equipment failure Prediction using IoT Sensor data - Overview](https://github.com/IBM/iot-predictive-analytics)
-* [Equipment failure Prediction using IoT Sensor data - Code and HowTo](https://github.ibm.com/developer-journeys/si-journey-iot-predictive-analytics)  
+* [Predict equipment failure using IoT sensor data - Overview](https://developer.ibm.com/code/patterns/predict-equipment-failure-using-iot-sensor-data/)
+* [Predict equipment failure using IoT sensor data - Code and HowTo](https://github.ibm.com/developer-journeys/si-journey-iot-predictive-analytics)  
  
 Also, by using multivariate data collected from different sensors mounted on an equipment, more   
 sophisticated Predictive models can be built that can pinpoint upcoming failure of a specific   
