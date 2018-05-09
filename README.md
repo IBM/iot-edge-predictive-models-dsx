@@ -80,8 +80,8 @@ below pre-requisites.
     translate it into an action and communicate the action to be taken back to the edge layer, Raspberry Pi  
 7.	Analytics logic to detecting the action to be taken at the Edge will be embedded in the Node-RED  
     flow in IBM Cloud – IoT service  
-8.	Node-RED ``Collector`` flows in Raspberry Pi will also receive commands for  
-    action from IoT platform in IBM Cloud and initiates action  
+8.	Node-RED ``Collector`` flows in Raspberry Pi will also receive commands for action from IoT platform  
+    in IBM Cloud and initiates action  
   
 # 3 Included Components 
 * [IBM Cloud](https://console.bluemix.net/catalog/): IBM's innovative cloud computing platform or IBM Cloud (formerly Bluemix) combines   
