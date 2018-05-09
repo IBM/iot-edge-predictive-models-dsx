@@ -19,7 +19,7 @@ The Process steps for applying Analytics on IoT data can be broadly classified a
 Specifically focussing on points 2,3,4 above.  
 
 ![png](doc/images/iea_aainiot_arch.png)  
-Image from blog [Advanced Analytics Applications in IoT](https://developer.ibm.com/code/?p=25889)  
+Image from blog [Advanced Analytics Applications in IoT](https://developer.ibm.com/code/2017/11/17/advanced-analytics-applications-iot/)  
   
 While Rule based anomaly detection uses point in time data, which may be sudden spike in some parameters  
 with a possibility of getting back to normal ranges, statistical Change point detection can differentiate  
