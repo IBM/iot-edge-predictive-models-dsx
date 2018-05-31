@@ -1,12 +1,12 @@
 ![DBG](images/dbg-horizontal.png)
 
-# Cloud Infrastructure - NAME
+# Edge communication using Predictive and Change Point models in Watson IoT and IBM DSX (IoT)
 
-Offering Managers: Jane Doe (Business Unit)
+Offering Managers: Manjula Hosurmath (India Software Labs, SI Labs, Digital Business Group)
 
-Development: Jane Doe (Engineer)
+Development: Krishna Prabu D (Data &Analytics Scientist, India Software Labs)
 
-Month Day, Year
+May 30, 2018  
 
 ![DBG](images/dbg-vertical.png)
 
@@ -17,135 +17,134 @@ Month Day, Year
 
 ## Overview
 
-Enhance existing messaging systems with simple transformations to create new processes and data transformations with the least amount of code using Apache OpenWhisk.
+Advanced Analytics can be applied in various areas of IoT like “Change Point detection using IoT Sensor data” and “Predictive Analytics using IoT Sensor data”.  
+  
+Once a Descriptive or Prescriptive model outcome is arrived established, it needs to be translated into action.
+This journey demonstrates how such a communication to the Edge layer can be implemented for a “Change Point detection using IoT Sensor data” or a “Predictive Analytics using IoT Sensor data”.  
+  
 
 ## Architecture Diagram
 
-![Architecture](images/architecture.png)
+![Architecture](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/doc/images/iea_arch_flow.png)
 
 ## IBM Products
 
-* Message Hub
-* OpenWhisk
+* [IBM Watson Studio]( https://datascience.ibm.com/)  
+* [IBM Watson]( https://dataplatform.ibm.com/)  
+* [Analytics]( https://developer.ibm.com/code/technologies/analytics/?cm=IBMCode-_--_-featured_technologies-_-analytics)  
+* [Data Science]( https://developer.ibm.com/code/technologies/data-science/?cm=IBMCode-_--_-featured_technologies-_-data-science)
 
 ## Related Technologies
 
-* Apache Kafka
-
+*	Edge communication
+*	Node-RED  
+  
 ## Key Features
 
-Serverless computing, message processing with Apache Kafka, minimal code
-techniques.
-
+Equipment Failure Prediction in IBM Watson Data platform, Sensor data collection in Edge using Node-RED, Map corrective action in IBM IoT platform in Watson cloud, Communicate action back to Edge.  
+  
 ## Rationale
 
-This introduction to OpenWhisk enables developers on the simplest way to add new Cloud functions to existing systems. It demonstrates the zero-infrastructure and minimal code techniques to create whole new business flows that tie into an existing messaging system. OpenWhisk is an amazing value to developers only using 1 line of code. 
+Advanced Analytics can be applied in various areas of IoT like “Change Point detection using IoT Sensor data” where Time series data is leveraged and “Predictive Analytics using IoT Sensor data” where multivariate Predictive algorithms are used.  
+  
+Once a Descriptive or Prescriptive model outcome is established, it needs to be translated into action. For example, if Change point is detected in temperature by the Statistical model in a Cooler unit, then a action need to be initiated to bring the temperature in the unit back to normal. Which can be for example increasing the inlet pressure or increasing the voltage in one of the compressors attached to the unit or rerouting the flow of coolant by activating a solenoid valve etc.,
+This translation to action can be either via Human intervention or a completely automated process. In case of the Automated intervention to take Predictive or corrective action, the prescriptive commands need to be passed to the Edge layer and vice-versa.  
+  
+This journey demonstrates how such a communication to the Edge layer can be implemented for a “Change Point detection using IoT Sensor data” or a “Predictive Analytics using IoT Sensor data”.  
+  
+Developers need an established method to translate the Predictive results into action and communicate the same to the edge layer. The edge layer which is attached to controllers can then take autonomous action in an Automated or a Mass production environment.  
+  
+A step by step flow for communication a command to take action at the edge will be shown in this journey.  
+ 
 
 ## Code Pattern Hypothesis
 
 ### Opportunity
 
-* This Code Pattern targets developers learning serverless and low code techniques and IBM Cloud users looking to leverage event based integration
-
+* This Code Pattern targets Data scientists and IoT solution developers who have already built Statistical model based on IoT Time series data or Predictive models that predicts. And now looking for ways to integrate the outcome of these models to the Edge layer. It helps them to easily integrate the above using Node-red (https://nodered.org/) flows in a Edge layer prototyping environment like Raspberry Pi.  
+  
 ### Operational Efficiency
 
-* Demonstrates the power of one line of code with minimal configuration to add new capabilities to solutions
+* It eliminating complexity of acquiring embedded systems knowledge for edge communication  
 
-* Highlights developer productivity – zero server admin, rapid application cycles
-
+* This being a 3rd in a series of Composite journeys, helps completes end to end flow of Predictive Advanced Analytics on Edge  
+  
 ### Community and Advocacy
 
-* Cloud native communities and enterprise development communities where message oriented middleware patterns can be shown in the Cloud native form
-* DevOps conferences with rapid apps focus
-
+* Analytics, Data Science communities working in the Domain of IoT  
+* DevOps conferences with rapid apps focus  
+  
 ### Amplification
 
-* Expand to show other event triggers in the Bluemix platform – simple document management over storage
-* Mobile app versions with push/simple notification integration
-* Consider Swift community demos showing rapid business logic/backend changes * Would consider a more data oriented example (such as events on weather forecast changes, IoT sensors, etc)
-
+* Expand to show other event triggers in the IBM Watson platform – UI layer to develop a full fledged application on top  
+* Automated action at the Edge actuator and so seamless integration of Predictive maintenance  
+* Mobile app versions with push/simple notification integration  
+  
 ### Competition
 
-* AWS Lambda has the most mature offering in the market with event triggers broadly supported in the AWS platform
-* No other vendor has an open serverless platform, emphasize integrations with 3rd parties wherever possible to highlight OpenWhisk community
+*	A User interface on top of this composite pattern will enable transform this into a full fledged Product, Platform  
 
 ## Concept
 
 ### What is the Code Pattern?
-
-This project shows the power of serverless, event-driven architectures to execute code in response to messages or to handle streams of data records.
-
-The application demonstrates two OpenWhisk actions (written in JavaScript) that read and write messages with IBM Message Hub (based on Apache Kafka). The use case demonstrates how actions can work with data services and execute logic in response to message events.
-
-One action receives message streams of one or more data records. These records are piped to another action in an OpenWhisk sequence (a way to link actions declaratively in a chain). The second action aggregates the message and posts a transformed summary message to another topic.
+  
+Advanced Analytics can be applied in various areas of IoT like “Change Point detection using IoT Sensor data” where Time series data is leveraged and “Predictive Analytics using IoT Sensor data” where multivariate Predictive algorithms are used.
+  
+Once a Descriptive or Prescriptive model outcome is established, it needs to be translated into action. For example, if Change point is detected in temperature by the Statistical model in a Cooler unit, then a action need to be initiated to bring the temperature in the unit back to normal. Which can be for example increasing the inlet pressure or increasing the voltage in one of the compressors attached to the unit or rerouting the flow of coolant by activating a solenoid valve etc.,
+  
+This translation to action can be either via Human intervention or a completely automated process. In case of the Automated intervention to take Predictive or corrective action, the prescriptive commands need to be passed to the Edge layer and vice-versa.
+  
+This journey demonstrates how such a communication to the Edge layer can be implemented for a “Change Point detection using IoT Sensor data” or a “Predictive Analytics using IoT Sensor data”  
+  
 
 ### Who is it for?
 
-This Code Pattern targets developers learning serverless and low code techniques and IBM Cloud users looking to leverage event based integration.
-
+Data scientists and IoT solution developers who have already built Statistical model based on IoT Time series data or Predictive models that predicts. And now looking for ways to integrate the outcome of these models to the Edge layer.  
+  
+This current implementation is developed using Node-red (https://nodered.org/) flows in a Edge layer prototyping environment like Raspberry Pi  
+  
 ### What will they learn?
-
-Serverless demonstrates the power of one line of code with minimal configuration to add new capabilities to solutions. This Code Pattern highlights the benefits of using this technology for developer productivity – zero server
-admins required, rapid application cycles, etc. With very little effort, a developer can now add event driven responses to messages to extend an existing application.
-
+  
+Developers need an established method to translate the Predictive results into action and communicate the same to the edge layer. The edge layer which is attached to controllers can then take autonomous action in an Automated or a Mass production environment.  
+A step by step flow for communication a command to take action at the edge will be shown in this journey.
+Data scientist, Developers will learn how to integrate results from IBM Watson  Data platform using Watson IoT services and 2 way communication between Node-Red on a edge device.  
+  
 ## What does it look like?
 
-1. Provision Message Hub
-2. Create OpenWhisk actions, triggers, and rules
-3. Test new message events
-4. Delete actions, triggers, and rules
-5. Recreate deployment manually
-
+1.  User sets up Node-RED in Raspberry Pi and connect to Network  
+2.	User imports Node-RED flows in Raspberry Pi  
+3.	User configures Emitter, Receiver Node-RED flows in Raspberry Pi  
+4.	User signs up for IBM Internet of Things Starter service on IBM Cloud  
+5.	User imports Node-RED flows in IBM IoT Cloud service  
+6.	User configures Emitter Node-RED flows in IBM IoT Cloud service  
+7.	User checks the CPU temperature from Raspberry Pi transported to IBM IoT service  
+8.	User checks the action received at the Raspberry Pi Edge node from IBM IoT service  
+  
 # Strategy
 
 ## What is the strategy?
 
-Serverless computing, also known as function as a service (FaaS), is a cloud computing code execution model in which the cloud provider fully manages starting and stopping of a function's container platform as a service (PaaS)
-as necessary to serve requests, and requests are billed by an abstract measure of the resources required to satisfy the request, rather than per virtual machine, per hour.
-
-Despite the name, it does not actually involve running code without servers. The name "serverless computing" is used because the business or person that owns the system does not have to purchase, rent or provision servers or virtual machines for the back-end code to run on.
-
-In many of today’s cloud-native applications, data is generated at huge volumes and is used to link highly distributed services. Apache Kafka provides a system to stream messages at scale, but the systems that receive those messages must be able to process and act on individual records as well.
-
-With an event-driven architecture built on OpenWhisk (IBM’s open serverless technology), you can write functions that respond to messages from queues and execute logic to process or send data to other systems in a distributed architecture. And you’ll pay only for the resources consumed by your analytics functions for the fractions of a second that they run. This gives you a tight match between transactions processed and cloud resources used.
-
-This is the promise of an event-driven, serverless architecture for new cloud-native applications such as those that support high volume stream-based message processing.
-
-AWS Lambda has the most mature offering in the market with event triggers broadly supported in the AWS platform. AWS Kinesis is a cloud-based managed alternative to Kafka, which is directly competitive to IBM’s Bluemix Message Hub. Many existing tutorials exist for processing large data streams with event driven serverless technology on AWS:
-
-* http://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html
-* http://docs.aws.amazon.com/lambda/latest/dg/with-kinesis-example.html
-* https://aws.amazon.com/blogs/big-data/persist-streaming-data-to-amazon-s3-using-amazon-kinesis-firehose-and-aws-lambda/
-* https://hackernoon.com/processing-real-time-big-data-streams-using-kinesis-lambda-561a029ef305
-
-Despite this clear advantage, no other vendor has an open serverless platform, emphasize integrations with 3rd parties wherever possible than the IBM OpenWhisk community. It is an immediate opportunity for IBM to highlight our Open by Design strategy in a space where we are behind our competition with documentation for developers looking to on-ramp into using serverless technologies.
-
+Advanced Analytics can be applied in various areas of IoT like “Change Point detection using IoT Sensor data” and “Predictive Analytics using IoT Sensor data”.  
+  
+Once a Descriptive or Prescriptive model outcome is arrived established, it needs to be translated into action.  
+  
+This journey demonstrates how such a communication to the Edge layer can be implemented for a “Change Point detection using IoT Sensor data” or a “Predictive Analytics using IoT Sensor data”  
+  
 ## What is the advocacy potential?
 
-This Code Pattern is relevant to cloud native, serverless, and enterprise development communities where message oriented patterns can be shown in the Cloud native form.
-
+This Code Pattern is relevant to Data Science, Advanced Analytics, Predictive maintenance, IoT communities who are looking for developing, implementing platform that collect data from IoT Edge devices and run Predictive Analytics on the data in Cloud and then propogate a corrective action back to the controllers connected to the Edge layer.  
+  
 ## What are some target events or meetups?
-
-DevOps, Serverless, and Open Source meetups and conferences with rapid app development focus:
-
-* DevOps Days (many worldwide)
-* Container Camp AU (5/22-24)
-* Cloud Expo NYC (6/6)
-* OSCON (5/10)
-* OSCON EU (11/6)
-* Open Source Summit LA (9/11-13)
-* Open Source Summit Tokyo (5/31)
-* Open Source Summit Europe (10/23)
-* CloudNativeCon / KubeCon Austin (12/6)
-* ApacheCon North America (5/16)
-* Serverless Conf (4/26)
-* Serverless Conf Europe (10/24)
-* Kafka Summit SF (8/28)
-
+  
+DevOps, IoT, and Open Source meetups and conferences with rapid app development focus:  
+•	DevOps Days (many worldwide)  
+•	Container Camp AU  
+•	Open Source Summit  
+  
 ## How does this impact the city and community Heat Maps?
 
-This Code Pattern is an opportunity to advocate in Cloud Native and Serverless communities, where IBM is sorely behind the competition - OpenWhisk is a critical for competing with Amazon Lambda in all cities.
-
+This Code Pattern is an opportunity to advocate in IoT communities looking for automating or building a end to end Platform  
+  
 ## What are the key metrics for this Code Pattern?
 
 1. \# Github repo forks
