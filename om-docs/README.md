@@ -1,4 +1,4 @@
-# Edge communication using Predictive and Change Point models in Watson IoT and IBM DSX (IoT)
+# Edge communication using Predictive and Change Point models in Watson IoT and IBM DSX (IoT)  
 
 Internet of Things (IoT) have evolved tremendously in all spheres of our lives like Industrial
 applications, Social interactions, Remote management of facilities and equipment to name a few.
@@ -34,13 +34,15 @@ Specifically focussing on points 2,3,4 above.
 
 ## Strategic Alignment
 
-* IBM Products
+* IBM Products  
+  
 [IBM Watson Studio](https://datascience.ibm.com/)  
 [IBM Watson](https://dataplatform.ibm.com/)  
 [Analytics](https://developer.ibm.com/code/technologies/analytics/?cm=IBMCode-_--_-featured_technologies-_-analytics)
 [Data science](https://developer.ibm.com/code/technologies/data-science/?cm=IBMCode-_--_-featured_technologies-_-data-science)
   
-* Key Features
+* Key Features  
+  
 o	Data Science  
 o	Edge Analytics  
 o	Node-RED  
