@@ -1,6 +1,0 @@
-#!/bin/bash
-
-echo "==> generating overview.pdf"
-docker run -v `pwd`:/source jagregory/pandoc README.md -o overview.pdf  -f markdown_github+escaped_line_breaks --latex-engine=xelatex --columns 3
-echo "==> generating detailed.pdf"
-docker run -v `pwd`:/source jagregory/pandoc detailed.md -o detailed.pdf  -f markdown_github+escaped_line_breaks --latex-engine=xelatex --columns 3
