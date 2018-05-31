@@ -36,17 +36,17 @@ Specifically focussing on points 2,3,4 above.
 
 * IBM Products  
   
-[IBM Watson Studio](https://datascience.ibm.com/)  
-[IBM Watson](https://dataplatform.ibm.com/)  
-[Analytics](https://developer.ibm.com/code/technologies/analytics/?cm=IBMCode-_--_-featured_technologies-_-analytics)
-[Data science](https://developer.ibm.com/code/technologies/data-science/?cm=IBMCode-_--_-featured_technologies-_-data-science)
+   [IBM Watson Studio](https://datascience.ibm.com/)  
+   [IBM Watson](https://dataplatform.ibm.com/)  
+   [Analytics](https://developer.ibm.com/code/technologies/analytics/?cm=IBMCode-_--_-featured_technologies-_-analytics)
+   [Data science](https://developer.ibm.com/code/technologies/data-science/?cm=IBMCode-_--_-featured_technologies-_-data-science)
   
 * Key Features  
   
-o	Data Science  
-o	Edge Analytics  
-o	Node-RED  
-o	IoT  
+   o	Data Science  
+   o	Edge Analytics  
+   o	Node-RED  
+   o	IoT  
   
 * Business Unit - India Software Labs, SI Labs, Digital Business Group
 * Offering Manager - Manjula Hosurmath
