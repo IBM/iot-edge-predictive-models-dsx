@@ -33,19 +33,7 @@ This pattern uses [Node-RED](https://nodered.org/) at both device and cloud for 
 - Send a command back to the Raspberry Pi through the Watson IoT platform
   
 ## Prerequisites:  
-Users who want to implement this IBM Code pattern are expected to have the below knowledge as  
-Pre-requisites. Before proceeding, it is strongly suggested to familiarize yourself with the  
-below pre-requisites.  
-1.	[Node-RED]( https://nodered.org/):  
-    a.	[Creating your first sample flow](https://nodered.org/docs/getting-started/first-flow)  
-    b.	[Creating your second sample flow](https://nodered.org/docs/getting-started/second-flow)  
-2.	Node-RED in IBM Cloud (previously IBM Bluemix):  
-    a.	[Running Node-RED on IBM blue mix](https://nodered.org/docs/platforms/bluemix)  
-    b.	[Deploying IoT platform starter on IBMcloud]( https://developer.ibm.com/recipes/tutorials/deploy-internet-of-things-platform-starter-service-on-bluemix/)  
-3.	Node-RED on Raspberry Pi:  
-    a.	[Running Node-RED on Raspberry Pi](https://nodered.org/docs/hardware/raspberrypi)  
-4.	[Configure a Raspberry Pi with Watson IoT Platform and connect it to the cloud](https://www.youtube.com/watch?v=nlvAFwifU9c&feature=youtu.be)  
-  
+* [Running Node-RED on Raspberry Pi](https://nodered.org/docs/hardware/raspberrypi)  
 
 # 2 Flow
 ![png](doc/images/iea_arch_flow.png)  
@@ -67,14 +55,16 @@ below pre-requisites.
   toolkit that includes gateway devices, device management, and powerful application access. By using  
   Watson IoT Platform, you can collect connected device data and perform analytics on real-time data  
   from your organization.  
-* [IBM Data Science Experience](https://www.ibm.com/bs-en/marketplace/data-science-experience): Analyze data using Python, Jupyter Notebook  
+* [IBM Watson Studio](https://www.ibm.com/bs-en/marketplace/data-science-experience): Analyze data using Python, Jupyter Notebook  
   and RStudio in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.  
+* [DB2 Warehouse](https://console.bluemix.net/catalog/services/db2-warehouse): IBM Db2 Warehouse on Cloud is a fully-managed, enterprise-class, cloud data warehouse service.
 
 # 4	Featured Technologies
 
 * [Analytics](https://developer.ibm.com/code/technologies/analytics?cm=IBMCode-_--_-featured_technologies-_-analytics): Finding patterns in data to derive information.  
 * [Data Science](https://developer.ibm.com/code/technologies/data-science?cm=IBMCode-_--_-featured_technologies-_-data-science): Systems and scientific methods to analyze structured and unstructured data in  
   order to extract knowledge and insights.  
+* [Internet of Things](https://en.wikipedia.org/wiki/Internet_of_things)
 
 # 5	Watch the Video  
 * [Video](https://youtu.be/2CJcqMPIFaY)  
