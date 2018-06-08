@@ -50,20 +50,14 @@ below pre-requisites.
 # 2 Flow
 ![png](doc/images/iea_arch_flow.png)  
 
-1.	Temperature Data is read from a sensor attached to an edge device, in our case CPU temperature  
-    sensor in Raspberry Pi  
-2.	.json files are imported to create 2 Node-RED flows in Raspberry Pi or the Edge layer  
-3.	Node-Red ``Emitter`` running on Raspberry Pi will collect the CPU temperature sensor data and dispatch it to  
-    IBM IoT service in Cloud.  
-4.	Node-RED flows running on IBM Internet of Things (IoT) platform in IBM Cloud will receive the data from  
-    Raspberry Pi and Analyzes the data to detect if any action needs to be taken at the edge  
-5.	.json files will be imported to create the Node-RED flows in the IBM Cloud – IoT service  
-6.	Node-RED flows running on IBM IoT platform will once again run the logic on the data and then  
-    translate it into an action and communicate the action to be taken back to the edge layer, Raspberry Pi  
-7.	Analytics logic to detecting the action to be taken at the Edge will be embedded in the Node-RED  
-    flow in IBM Cloud – IoT service  
-8.	Node-RED ``Collector`` flows in Raspberry Pi will also receive commands for action from IoT platform  
-    in IBM Cloud and initiates action  
+1.	The Raspberry Pi gets events from the sensors. In the absence of sensors, the sensor events are read from a file. 
+2.	The Node-RED flows are invoked on the Raspberry Pi. 
+3.	The sensor events are sent to the Watson IoT platform.  
+4.	The Watson IoT platform receives the events and sends it to all subscribing applications. 
+5.	The Node-RED flows on IBM Cloud are triggered. The sensor events are recieved and stored into a database. 
+6.	The predictive model on Watson Studio is triggered. The outcome of the model execution is sent back to the Node-RED through websockets.
+7.	Based on the outcome, the Node-RED flow sends a command with the action to be taken to the edge device(Raspberry Pi) through the Watson IoT platform  
+8.	The Node-RED flow on Raspberry Pi recieve the command 
   
 # 3 Included Components 
 * [IBM Cloud](https://console.bluemix.net/catalog/): IBM's innovative cloud computing platform or IBM Cloud (formerly Bluemix) combines   
