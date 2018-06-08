@@ -17,13 +17,14 @@ The below two code patterns cover statistical change point detection and predict
 * [Detect change points in IoT sensor data - Overview](https://developer.ibm.com/code/patterns/detect-change-points-in-iot-sensor-data/)  
 * [Predict equipment failure using IoT sensor data - Overview](https://developer.ibm.com/code/patterns/predict-equipment-failure-using-iot-sensor-data/)
 
-*This IBM Code Pattern is a composite pattern that demostrates the building of complete IoT Analytics systems.*  
-
+This IBM Code Pattern is a composite pattern that demostrates the building of complete IoT analytics solution.
 When you complete this code pattern, you will learn how to:
 * Send events from an edge device (we use Raspberry Pi for demonstration) to the Watson IoT Platform
 * Store the events in a DB2 database on IBM Cloud
 * Invoke a predictive model on Watson Studio for IoT events
 * Send a command back to the edge (we use Raspberry Pi for demonstration) based on the outcome of the predictive model
+
+This pattern uses a sample equipment sensors data. This data is sent to the Watson IoT platform and stored in a DB2 database. A predictive model is built using the data in the DB2 database. The predictive model then takes the sensor events from Watson IoT platform as input and returns the state of the equipment as `Running` or `Failing`. If the equipment is failing, then a shutdown command is sent back to the edge device which is a Raspberry Pi.
 
 This pattern uses [Node-RED](https://nodered.org/) at both device and cloud for building the solution:
 - Implementing device client on Raspberry Pi to send events to Watson IoT platform
