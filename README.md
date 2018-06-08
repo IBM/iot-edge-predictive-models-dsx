@@ -71,110 +71,13 @@ This pattern uses [Node-RED](https://nodered.org/) at both device and cloud for 
   
 # 6	Steps  
 
-1.	[User sets up Node-RED in Raspberry Pi and connect to Network](#6.1-user-sets-up-node-red-in-raspberry-pi-and-connect-to-network)
-2.	[User imports Node-RED flows in Raspberry Pi](#62-user-imports-node-red-flows-in-raspberry-pi)
-3.	[User configures Emitter, Receiver Node-RED flows in Raspberry Pi](#63-user-configures-emitter-receiver-node-red-flows-in-rpi)
-4.	[User signs up for IBM Internet of Things Starter service on IBM Cloud](#64-user-signs-up-for-ibm-internet-of-things-starter-service-on-ibm-cloud)
-5.	[User imports Node-RED flows in IBM IoT Cloud service](#65-user-imports-node-red-flows-in-ibm-iot-cloud-service)
-6.	[User configures Emitter Node-RED flows in IBM IoT Cloud service](#66-user-configures-emitter-node-red-flows-in-ibm-iot-cloud-service)
-7.	[User checks the CPU temperature from Raspberry Pi transported to IBM IoT service](#7-run-the-node-red-flows-and-view-the-results)
-8.	[User checks the action received at the Raspberry Pi Edge node from IBM IoT service](#7-run-the-node-red-flows-and-view-the-results)
-
-<a name="61-user-sets-up-node-red-in-raspberry-pi-and-connect-to-network"></a>  
-## 6.1	User sets up Node-RED in Raspberry Pi and connect to Network  
-Follow this [Video]( https://www.youtube.com/watch?v=nlvAFwifU9c&feature=youtu.be) which will walk you through the below steps.  
-1.	Setup and Connect Raspberry Pi to Local Wifi Network with Internet  
-2.	Connect the Raspberry Pi to the same WiFi network as your Laptop  
-3.	Login to Raspberry Pi from your Laptop using putty or any other SSH  
-4.	Start Node-RED service on Raspberry Pi  
-5.	Start IoT service in Raspberry Pi if not started already  
-6.	On your laptop / desktop web browser, open the Node-RED web editor running on Raspberry by entering the URL  
-    `raspberrypi ip address:1880`. In the example shown below the IP address for Raspberry Pi is `192.168.1.26`.  
-	You can check your WiFi router (or hotspot) configuration for the finding the Raspberry Pi IP address.  
-
-<a name="62-user-imports-node-red-flows-in-raspberry-pi"></a>  
-## 6.2  User imports Node-RED flows in Raspberry Pi  
-
-Import “Emitter” Node-RED flow “Rpi2BMX” in Raspberry Pi from [RPi2BMX.json](/configuration/RPi/RPi2BMX.json)  
-
-![png](doc/images/iea_rpi2bmx_flow.png)  
-Leave the tab that shows this flow open.   
- 
-Import “Collector” Node-RED flow “BMX2RPi” on Raspberry Pi from [BMX2RPi.json](/configuration/RPi/BMX2RPi.json)  
-
-![png](doc/images/iea_bmx2rpi_flow.png)  
-This will create a second flow "BMX2RPi" in a second tab. Leave this open as well.  
-
-<a name="63-user-configures-emitter-receiver-node-red-flows-in-rpi"></a>  
-## 6.3	User configures Emitter,Receiver Node-RED flows in Raspberry Pi  
-
-* In the flow “Rpi2BMX”, set the Device ID in the “event” IoT output node to “kpedgetobmx20171207”  
-
-* In “BMX2RPi” flow, set the “Device ID” in the “Receive IBM IoT BMX command to Edge” node to “kpbmxtoedge20171207”  
-
-Make a note of the above 2 Device IDs  
-You will need them later in Node–RED flow in IBM Cloud  
-
-
-<a name="64-user-signs-up-for-ibm-internet-of-things-starter-service-on-ibm-cloud"></a>  
-## 6.4	User signs up for IBM Internet of Things Starter service on IBM Cloud  
-
-* Go to [IBM Cloud Catalog]( https://console.bluemix.net/catalog/) and type “node-red” in the search box.  
-* This displays a list of components that match the search criteria in IBM Cloud.  
-* Select the “Node-RED starter” Service  
-
-![png](doc/images/iea_nodered_bmx.png)  
+1.	[Create IBM Cloud services](#6.1-create-ibm-cloud-services)
   
-* Fill in the details in the Node-RED service creation page  
-
-![png](doc/images/iea_nodered_bmx_form.png)   
-  
-* Select the 30 days trial plan and click `Create`  
-
-![png](doc/images/iea_nodered_bmx_plan.png)    
-* The Node-RED service will be created under `Cloud Foundry App` and the service will be started by default.  
-* Click on `Visit App URL` in the Service status page.  
-* You will be asked for a User ID and password. This is for accessing the Node-RED flows that will be created  
-  by you in future.  
-* Enter a UserID and password and make a note of it. You will need it later when you relogin and work on your  
-  Node-RED flows.  
-* In the next page, you will be provided with options for browsing `Available Bluemix nodes`.  
-
-![png](doc/images/iea_nodered_bmx_iotp.png)   
-
-* Select `node-red-contrib-ibm-wiotp-device-ops` and click `Next`  
-
-![png](doc/images/iea_nodered_bmx_edlaunch.png)   
-
-* Click on `Go to Node-RED flow editor`. You will be presented with a blank Node-RED flow tab   
- 
-![png](doc/images/iea_nodered_bmx_blank.png)   
-  
-As a trial, drag and drop the input node that says `ibmiot` into the blank tab `Flow 1`.  
-You can see a description of the functions of this node. You can experiment further to get yourself comfortable with  
-the flow. Discard or Save any flow you might have created, we will be using from pre-built flows that are made available  
-in the git repo.  
+## 6.1	Create IBM Cloud services  
 
 
-<a name="65-user-imports-node-red-flows-in-ibm-iot-cloud-service"></a>  
-## 6.5	User imports Node-RED flows in IBM IoT Cloud service  
-* Import  the Node-RED flow  “BMXReceiveIoTTemp” from [BMXReceiveProcessIoTTemp.json](/configuration/BMX/BMXReceiveProcessIoTTemp.json)
- 
-![png](doc/images/iea_bmxreceiveiottemp_bmx_flow.png)   
-  
 
-<a name="66-user-configures-emitter-node-red-flows-in-ibm-iot-cloud-service"></a>  
-## 6.6	User configures Emitter Node-RED flows in IBM IoT Cloud service  
 
-* Set the “Device ID” in the “ibmiot” node to “kpedgetobmx20171207”   
-  This is the node that receives data from Raspberry Pi "Emitter" flow.  
-
-![png](doc/images/iea_bmxreceiveiottemp_bmx_devid.png)    
-
-* Set the “Device ID” in the “IoT BMX Command to Edge” node to “kpbmxtoedge20171207”   
-  This is the node that sends data / commands back to Raspberry Pi "Collector" flow.  
-  
-<a name="7-run-the-node-red-flows-and-view-the-results"></a>  
 # 7	Run the Node-RED flows and View the Results
   
 _Note: Steps on how to Run the flow is not explained in detail as these are basics covered in the Pre-requisites._  
