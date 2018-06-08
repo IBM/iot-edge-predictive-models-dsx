@@ -1,55 +1,36 @@
 # 1  Edge communication using Predictive and Change Point models in Watson IoT and IBM DSX (IoT)  
   
-Internet of Things (IoT) have evolved tremendously in all spheres of our lives like Industrial  
-applications, Social interactions, Remote management of facilities and equipment to name a few.  
+Internet of Things (IoT) have evolved tremendously in all spheres of our lives like Industrial applications, Social interactions, Remote management of facilities and equipment to name a few.  
   
-In general application areas, IoT data collected by Sensors can be used for monitoring as  
-well as predicting the outcomes. If any deviation from the norm is detected, corrective action can be  
-prescribed either manually or by an automated process. Such actions may come out of Rule based anomaly  
-detection or a Statistical Change point detection or a Predictive model that predicts a faulty  
-condition ahead of time.  
-  
-The Process steps for applying Analytics on IoT data can be broadly classified as below
+In general application areas, IoT data collected by Sensors can be used for monitoring as well as predicting the outcomes. 
+
+If any deviation from the norm is detected, corrective action can be  prescribed either manually or by an automated process. Such actions may come out of Rule based anomaly detection or a Statistical Change point detection or a Predictive model that predicts a faulty condition ahead of time. This approach goes a long way in implementing Predictive maintenance which is more prudent approach than Scheduled Preventive maintenance which is periodic in nature. 
+
+The end to end process steps for applying Analytics on IoT data are listed below:
 1.	Collect IoT data from sensor
-2.	Change Point detection using IoT Sensor data
-3.	Predicting Equipment failure using IoT Sensor data
-4.	Sending Decisions based on Analytics insights to the edge for Automated Action
+2.	Change point detection using IoT Sensor data
+3.	Predicting equipment failure using IoT Sensor data
+4.	Sending decisions based on Analytics insights to the edge for automated action
 
-*This IBM Code Pattern is a composite pattern that brings together the end to end flow of IoT Analytics systems.*  
-Specifically focussing on points 2,3,4 above.  
-
-![png](doc/images/iea_aainiot_arch.png)  
-Image from blog [Advanced Analytics Applications in IoT](https://developer.ibm.com/code/2017/11/17/advanced-analytics-applications-iot/)  
   
-While Rule based anomaly detection uses point in time data, which may be sudden spike in some parameters  
-with a possibility of getting back to normal ranges, statistical Change point detection can differentiate  
-and identify a Change in operating parameters that might not return to normal by itself. And so a more  
-reliable corrective action can be initiated.  
-
-The Statistical method and flow for detecting change points in IoT Sensor data and related steps are  
-covered in the IBM Code pattern below:  
+The below two code patterns cover statistical change point detection and predicting equipment failure using IoT sensor data.
 * [Detect change points in IoT sensor data - Overview](https://developer.ibm.com/code/patterns/detect-change-points-in-iot-sensor-data/)  
-* [Detect change points in IoT sensor data - Code and HowTo](https://github.com/IBM/detect-timeseriesdata-change)  
-
-
-One step further, using Advanced Analytics, predictive models can be built that could predict a failure  
-condition in an equipment or a system like say a Compressor in a refrigeration unit well ahead of time.  
-   
-This approach goes a long way in implementing Predictive maintenance which is more prudent approach   
-than Scheduled Preventive maintenance which is periodic in nature.  
-Predictive Analytics on IoT is covered in the journey below:  
 * [Predict equipment failure using IoT sensor data - Overview](https://developer.ibm.com/code/patterns/predict-equipment-failure-using-iot-sensor-data/)
-* [Predict equipment failure using IoT sensor data - Code and HowTo](https://github.ibm.com/developer-journeys/si-journey-iot-predictive-analytics)  
- 
-Also, by using multivariate data collected from different sensors mounted on an equipment, more   
-sophisticated Predictive models can be built that can pinpoint upcoming failure of a specific   
-equipment or subsystem.  
+
+*This IBM Code Pattern is a composite pattern that demostrates the building of complete IoT Analytics systems.*  
+
+When you complete this code pattern, you will learn how to:
+* Send events from an edge device (we use Raspberry Pi for demonstration) to the Watson IoT Platform
+* Store the events in a DB2 database on IBM Cloud
+* Invoke a predictive model on Watson Studio for IoT events
+* Send a command back to the edge (we use Raspberry Pi for demonstration) based on the outcome of the predictive model
+
+This pattern uses [Node-RED](https://nodered.org/) at both device and cloud for building the solution:
+- Implementing device client on Raspberry Pi to send events to Watson IoT platform
+- Consuming events from Watson IoT platform on IBM Cloud and storing the events in a DB2 database
+- Invoke predictive model on Watson Studio and get a response back for an IoT event
+- Send a command back to the Raspberry Pi through the Watson IoT platform
   
-Once an anomaly is detected, a prescriptive action needs to be taken.  
-This journey in specific covers, **Detecting the need for any corrective action and then  
-communicating Decisions based on Analytics insights to the edge for Automated Action**  
-
-
 ## Prerequisites:  
 Users who want to implement this IBM Code pattern are expected to have the below knowledge as  
 Pre-requisites. Before proceeding, it is strongly suggested to familiarize yourself with the  
