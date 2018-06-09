@@ -11,8 +11,7 @@ The end to end process steps for applying Analytics on IoT data are listed below
 2.	Change point detection using IoT Sensor data
 3.	Predicting equipment failure using IoT Sensor data
 4.	Sending decisions based on Analytics insights to the edge for automated action
-
-  
+ 
 The below two code patterns cover statistical change point detection and predicting equipment failure using IoT sensor data.
 * [Detect change points in IoT sensor data - Overview](https://developer.ibm.com/code/patterns/detect-change-points-in-iot-sensor-data/)  
 * [Predict equipment failure using IoT sensor data - Overview](https://developer.ibm.com/code/patterns/predict-equipment-failure-using-iot-sensor-data/)
@@ -68,22 +67,36 @@ This pattern uses [Node-RED](https://nodered.org/) at both device and cloud for 
 * [Internet of Things](https://en.wikipedia.org/wiki/Internet_of_things)
 
 # 5	Watch the Video  
+
 * [Video](https://youtu.be/2CJcqMPIFaY)  
   
 # 6	Steps  
 
-1.	[Create IBM Cloud services](#6.1-create-ibm-cloud-services)
+1.	[Create IBM Cloud services and configure](#6.1-create-ibm-cloud-services-and-configure)
   
-## 6.1	Create IBM Cloud services 
+## 6.1	Create IBM Cloud services and configure
 
 ### 6.11 Internet of Things Platform
 * Click on [Internet of Things Platform](https://console.bluemix.net/catalog/services/internet-of-things-platform) and create an instance of Internet of Things Platform. 
 * Click on `Launch` to launch the `Dashboard`
 * Create a device type `Equipment` and device `Sensors`.
 Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-started.html#getting-started-with-iotp) and [article](https://developer.ibm.com/recipes/tutorials/how-to-register-devices-in-ibm-iot-foundation/).
-* Note down the device credentials
+* Note down the device credentials. They cannot be retrieved later.
+> The device credentials will be used later to configure Node-RED.
 
-### 6.12 Node-RED on IBM Cloud
+### 6.12 DB2 Warehouse
+* Create a [DB2 Warehouse](https://console.bluemix.net/catalog/services/db2-warehouse) instance.
+> Make a note of the service name. This needs to be bound to Node-RED that is created in the next step.
+* Click on `Service Credentials`. Click on `New Credential`. Click on `View Credentials`.
+> Make a note of the database credentials to be entered into Watson Studio notebook later.
+* Click on `Manage`
+* Click on `Open` to launch the `Dashboard`
+* Click on `Explore`.
+* Click on the schema starting with `DASH`. 
+> Make a note of the schema name to be configured later on Watson Studio.
+* Click on `New Table` and create a table with the configuration as shown.
+
+### 6.13 Node-RED on IBM Cloud
 * Create the [Node-RED Starter application](https://console.bluemix.net/catalog/starters/node-red-starter).
 * Choose an appropriate name for the Node-RED application - `App name:`.
 * Click on `Create`.
@@ -91,7 +104,11 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 [**Node-RED Starter**](https://console.bluemix.net/catalog/starters/node-red-starter)
   ![](doc/source/images/bluemix_service_nodered.png)
 
-* On the newly created Node-RED application page, Click on `Visit App URL` to launch the Node-RED editor once the application is in `Running` state.
+* On the newly created Node-RED application page, click on `Connections`.
+* Click on `Create Connection` and select the DB2 Warehouse service that was created in the previous step. Click on `Connect`.
+> This binds the DB2 Warehouse service to Node-RED.
+* Click on `Getting Started`.
+* Click on `Visit App URL` to launch the Node-RED editor once the application is in `Running` state.
 * On the `Welcome to your new Node-RED instance on IBM Cloud` screen, Click on `Next`.
 * On the `Secure your Node-RED editor` screen, enter a username and password to secure the Node-RED editor and click on `Next`.
 * On the `Browse available IBM Cloud nodes` screen, click on `Next`.
@@ -109,6 +126,8 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
  <br/>
  <br/>
 
+* Click on the two DB2 nodes named `EQUIPMENT_DATA`. Select the DB2 Warehouse service.
+
 #### Deploy the Node-RED flow by clicking on the `Deploy` button
 
 ![](doc/source/images/deploy_nodered_flow.png)
@@ -122,17 +141,6 @@ The websocket URL is ws://`<NODERED_BASE_URL>`/ws/orchestrate  where the `NODERE
 An example websocket URL for a Node-RED app with name `myApp` is `ws://myApp.mybluemix.net/ws/orchestrate`, where `myApp.mybluemix.net` is the `NODERED_BASE_URL`.
 
 The `NODERED_BASE_URL` may have additional region information i.e. `eu-gb` for the UK region. In this case `NODERED_BASE_URL` would be: `myApp.eu-gb.mybluemix.net`.
-
-### 6.13 DB2 Warehouse
-* Create a [DB2 Warehouse](https://console.bluemix.net/catalog/services/db2-warehouse) instance.
-* Click on `Service Credentials`. Click on `New Credential`. Click on `View Credentials`.
-> Make a note of the database credentials to be entered into Watson Studio notebook later.
-* Click on `Manage`
-* Click on `Open` to launch the `Dashboard`
-* Click on `Explore`.
-* Click on the schema starting with `DASH`. 
-> Make a note of the schema name to be configured later on Watson Studio.
-* Click on `New Table` and create a table with the configuration as shown.
 
 ### 6.14 Watson Studio
 * Sign up for IBM's [Watson Studio](https://dataplatform.ibm.com/).
@@ -159,38 +167,49 @@ The data file can be found at the location - https://github.com/IBM/iot-edge-pre
 * Open the file with a text editor and copy the contents to Clipboard.
 * Access Node-RED using the IP address of the RaspberryPi as shown below.
 * On the Node-RED flow editor, click the Menu and select `Import` -> `Clipboard` and paste the contents.
-
 * Click on the `event` node.
 * Configure the device credentials noted earlier.
 
 * Click on the `all commands` node. Select the credentials configured in the previous step.
 * Click on `Deploy` to deploy the Node-RED flow.
 
-# 7	Run the Node-RED flows and View the Results
+# Run the Node-RED flow on Raspberry Pi
+Click on the inject node `Sensor event trigger`. This will send sensor events to the Watson IoT Platform. These events will get stored in the DB2 Warehouse.
+
+## 8. Run the notebook
+
+When a notebook is executed, what is actually happening is that each code cell in
+the notebook is executed, in order, from top to bottom.
+
+Each code cell is selectable and is preceded by a tag in the left margin. The tag
+format is `In [x]:`. Depending on the state of the notebook, the `x` can be:
+
+* A `blank`, this indicates that the cell has never been executed.
+* A `number`, this number represents the relative order this code step was executed.
+* A `*`, this indicates that the cell is currently executing.
+
+There are several ways to execute the code cells in your notebook:
+
+* One cell at a time.
+  * Select the cell, and then press the `Play` button in the toolbar.
+* Batch mode, in sequential order.
+  * From the `Cell` menu bar, there are several options available. For example, you
+    can `Run All` cells in your notebook, or you can `Run All Below`, that will
+    start executing from the first cell under the currently selected cell, and then
+    continue executing all cells that follow.
+* At a scheduled time.
+  * Press the `Schedule` button located in the top right section of your notebook
+    panel. Here you can schedule your notebook to be executed once at some future
+    time, or repeatedly at your specified interval.
+
+For this Notebook, you can simply `Run All` cells.
+The websocket client will be started when you run the cell under `7. Start websocket client`. This will start the communication between the UI and the Notebook.
+
+## 9 Analyze results
+Go to the Node-RED flow on the Raspberry Pi.
+Click on the inject node `Event - Running`. This sends an event with values indicating a good health to the Watson IoT Platform.
+Click on the inject node `Event - Failing`. This sends an event with values indicating a failing health to the Watson IoT Platform. A shutdown command is received from the Watson IoT platform after running of the predictive model.
   
-_Note: Steps on how to Run the flow is not explained in detail as these are basics covered in the Pre-requisites._  
-  
-* On RPi: Inject in ``RPi2BMX`` flow and see results in debug screen  
-  ![png](doc/images/iea_rpi2bmx_results.png)   
-  You must be able to see the CPU temperature in 'C output in the debug section.   
-  
-* On BMX: Inject in ``BMXReceiveIoTTemp`` flow and see results in debug screen  
-  ![png](doc/images/iea_bmxreceiveiottemp_results.png)   
-  You must be able to see the CPU temperature values received from Raspberry Pi.  
-  Also, the flow will analyze this temperature using rules and outputs a command `fanon` or `fanoff`   
-  depending on the temperature values received.  
-  The logic for doing the same is coded in the flow, which you can explore yourself. 
-    
-  _Note: This logic can be replaced with a complex algorithm that can predict an upcoming failure condition  
-  The focus of this Code Pattern is to show the means for implementing the flow and not in the logic itself  
-  and so the complexity of the flows are kept to a minimal.  
-  Users are encouraged to experiment with coding their own logic that suits their specific requirements._  
-  
-* On RPi: Inject ``BMX2RPi`` flow and see results in debug screen  
-  ![png](doc/images/iea_bmx2rpi_results.png)   
-  In the debug window, you must be able to see the commands received from the IBM Cloud - Node-RED flow  
-  
-* Confirm the ouputs  
 
 # 8	Troubleshooting  
 See [Debugging.md](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/DEBUGGING.md)  
