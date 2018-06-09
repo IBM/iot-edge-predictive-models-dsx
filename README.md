@@ -32,7 +32,8 @@ This pattern uses [Node-RED](https://nodered.org/) at both device and cloud for 
 - Invoke predictive model on Watson Studio and get a response back for an IoT event
 - Send a command back to the Raspberry Pi through the Watson IoT platform
   
-## Prerequisites:  
+## Prerequisites: 
+* [Connect Raspberry Pi to the network and Note IP address for accessing the Pi](https://www.raspberrypi.org/documentation/)
 * [Running Node-RED on Raspberry Pi](https://nodered.org/docs/hardware/raspberrypi)  
 
 # 2 Flow
@@ -73,7 +74,30 @@ This pattern uses [Node-RED](https://nodered.org/) at both device and cloud for 
 
 1.	[Create IBM Cloud services](#6.1-create-ibm-cloud-services)
   
-## 6.1	Create IBM Cloud services  
+## 6.1	Create IBM Cloud services 
+
+### Internet of Things Platform
+* Click on [Internet of Things Platform](https://console.bluemix.net/catalog/services/internet-of-things-platform) and create an instance of Internet of Things Platform. 
+* Click on `Launch` to launch the `Dashboard`
+* Create a device type `Equipment` and device `Sensors`.
+Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-started.html#getting-started-with-iotp) and the [article](https://developer.ibm.com/recipes/tutorials/how-to-register-devices-in-ibm-iot-foundation/).
+* Note down the device credentials
+
+### Node-RED on IBM Cloud
+* Create the [Node-RED Starter application](https://console.bluemix.net/catalog/starters/node-red-starter).
+* Choose an appropriate name for the Node-RED application - `App name:`.
+* Click on `Create`.
+
+  * [**Node-RED Starter**](https://console.bluemix.net/catalog/starters/node-red-starter)
+
+  ![](doc/source/images/bluemix_service_nodered.png)
+
+  * On the newly created Node-RED application page, Click on `Visit App URL` to launch the Node-RED editor once the application is in `Running` state.
+  * On the `Welcome to your new Node-RED instance on IBM Cloud` screen, Click on `Next`.
+  * On the `Secure your Node-RED editor` screen, enter a username and password to secure the Node-RED editor and click on `Next`.
+  * On the `Browse available IBM Cloud nodes` screen, click on `Next`.
+  * On the `Finish the install` screen, click on Finish.
+  * Click on `Go to your Node-RED flow editor`.  
 
 
 
