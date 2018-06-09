@@ -98,25 +98,6 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 * On the `Finish the install` screen, click on Finish.
 * Click on `Go to your Node-RED flow editor`.  
 
-### 6.13 DB2 Warehouse
-* Create a [DB2 Warehouse](https://console.bluemix.net/catalog/services/db2-warehouse) instance.
-* Click on `Open` to launch the `Dashboard`
-* Click on `Explore`.
-* Click on the schema starting with `DASH`. 
-| Make a note of the schema name to be configured later on Watson Studio.
-* Click on `New Table` and create a table with the configuration as shown.
-
-### 6.14 Watson Studio
-* Sign up for IBM's [Watson Studio](https://dataplatform.ibm.com/).
-* Create a project if necessary, provisioning an object storage service if required.
-* In the `Assets` tab, select the `Create notebook` option.
-* Select the `From URL` tab.
-* Enter a name for the notebook.
-* Optionally, enter a description for the notebook.
-* Enter this Notebook URL: https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/notebooks/watson_iotfailure_prediction.ipynb
-* Select the free Anaconda runtime.
-* Click the `Create` button.
-
 #### Import the Node-RED flow
 
 * [Clone this repo](https://github.com/IBM/iot-edge-predictive-models-dsx).
@@ -142,6 +123,30 @@ An example websocket URL for a Node-RED app with name `myApp` is `ws://myApp.myb
 
 The `NODERED_BASE_URL` may have additional region information i.e. `eu-gb` for the UK region. In this case `NODERED_BASE_URL` would be: `myApp.eu-gb.mybluemix.net`.
 
+### 6.13 DB2 Warehouse
+* Create a [DB2 Warehouse](https://console.bluemix.net/catalog/services/db2-warehouse) instance.
+* Click on `Service Credentials`. Click on `New Credential`. Click on `View Credentials`.
+> Make a note of the database credentials to be entered into Watson Studio notebook later.
+* Click on `Manage`
+* Click on `Open` to launch the `Dashboard`
+* Click on `Explore`.
+* Click on the schema starting with `DASH`. 
+> Make a note of the schema name to be configured later on Watson Studio.
+* Click on `New Table` and create a table with the configuration as shown.
+
+### 6.14 Watson Studio
+* Sign up for IBM's [Watson Studio](https://dataplatform.ibm.com/).
+* Create a project if necessary, provisioning an object storage service if required.
+* In the `Assets` tab, select the `Create notebook` option.
+* Select the `From URL` tab.
+* Enter a name for the notebook.
+* Optionally, enter a description for the notebook.
+* Enter this Notebook URL: https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/notebooks/watson_iotfailure_prediction.ipynb
+* Select the free Anaconda runtime.
+* Click the `Create` button.
+* In Section 7. of the notebook, enter the websocket URL noted earlier.
+* In Section 4. of the notebook, enter the database credentials for DB2 Warehouse noted earlier.
+
 ## 6.2 Configure Node-RED on Raspberry Pi
 
 ### 6.21 Copy the data file to Raspberry Pi and start Node-RED
@@ -160,9 +165,6 @@ The data file can be found at the location - https://github.com/IBM/iot-edge-pre
 
 * Click on the `all commands` node. Select the credentials configured in the previous step.
 * Click on `Deploy` to deploy the Node-RED flow.
-
-
-
 
 # 7	Run the Node-RED flows and View the Results
   
