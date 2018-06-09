@@ -83,6 +83,9 @@ This pattern uses [Node-RED](https://nodered.org/) at both device and cloud for 
 Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-started.html#getting-started-with-iotp) and [article](https://developer.ibm.com/recipes/tutorials/how-to-register-devices-in-ibm-iot-foundation/).
 * Note down the device credentials. They cannot be retrieved later.
 > The device credentials will be used later to configure Node-RED.
+* Click on `Apps`.
+* Click on `Generate API Key`. Select the role as `Data processor application`. Make a note of the `API Key` and `Authentication Token`. This will be needed in the Node-RED flow configuration in the subsequent steps.
+
 
 ### 6.12 DB2 Warehouse
 * Create a [DB2 Warehouse](https://console.bluemix.net/catalog/services/db2-warehouse) instance.
@@ -126,7 +129,8 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
  <br/>
  <br/>
 
-* Click on the two DB2 nodes named `EQUIPMENT_DATA`. Select the DB2 Warehouse service.
+* On the two DB2 nodes named `EQUIPMENT_DATA`. Select the DB2 Warehouse service.
+* Configure the two IoT nodes with the API Key and Authentication Token.
 
 #### Deploy the Node-RED flow by clicking on the `Deploy` button
 
