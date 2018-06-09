@@ -76,28 +76,90 @@ This pattern uses [Node-RED](https://nodered.org/) at both device and cloud for 
   
 ## 6.1	Create IBM Cloud services 
 
-### Internet of Things Platform
+### 6.11 Internet of Things Platform
 * Click on [Internet of Things Platform](https://console.bluemix.net/catalog/services/internet-of-things-platform) and create an instance of Internet of Things Platform. 
 * Click on `Launch` to launch the `Dashboard`
 * Create a device type `Equipment` and device `Sensors`.
-Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-started.html#getting-started-with-iotp) and the [article](https://developer.ibm.com/recipes/tutorials/how-to-register-devices-in-ibm-iot-foundation/).
+Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-started.html#getting-started-with-iotp) and [article](https://developer.ibm.com/recipes/tutorials/how-to-register-devices-in-ibm-iot-foundation/).
 * Note down the device credentials
 
-### Node-RED on IBM Cloud
+### 6.12 Node-RED on IBM Cloud
 * Create the [Node-RED Starter application](https://console.bluemix.net/catalog/starters/node-red-starter).
 * Choose an appropriate name for the Node-RED application - `App name:`.
 * Click on `Create`.
 
-  * [**Node-RED Starter**](https://console.bluemix.net/catalog/starters/node-red-starter)
-
+[**Node-RED Starter**](https://console.bluemix.net/catalog/starters/node-red-starter)
   ![](doc/source/images/bluemix_service_nodered.png)
 
-  * On the newly created Node-RED application page, Click on `Visit App URL` to launch the Node-RED editor once the application is in `Running` state.
-  * On the `Welcome to your new Node-RED instance on IBM Cloud` screen, Click on `Next`.
-  * On the `Secure your Node-RED editor` screen, enter a username and password to secure the Node-RED editor and click on `Next`.
-  * On the `Browse available IBM Cloud nodes` screen, click on `Next`.
-  * On the `Finish the install` screen, click on Finish.
-  * Click on `Go to your Node-RED flow editor`.  
+* On the newly created Node-RED application page, Click on `Visit App URL` to launch the Node-RED editor once the application is in `Running` state.
+* On the `Welcome to your new Node-RED instance on IBM Cloud` screen, Click on `Next`.
+* On the `Secure your Node-RED editor` screen, enter a username and password to secure the Node-RED editor and click on `Next`.
+* On the `Browse available IBM Cloud nodes` screen, click on `Next`.
+* On the `Finish the install` screen, click on Finish.
+* Click on `Go to your Node-RED flow editor`.  
+
+### 6.13 DB2 Warehouse
+* Create a [DB2 Warehouse](https://console.bluemix.net/catalog/services/db2-warehouse) instance.
+* Click on `Open` to launch the `Dashboard`
+* Click on `Explore`.
+* Click on the schema starting with `DASH`. 
+| Make a note of the schema name to be configured later on Watson Studio.
+* Click on `New Table` and create a table with the configuration as shown.
+
+### 6.14 Watson Studio
+* Sign up for IBM's [Watson Studio](https://dataplatform.ibm.com/).
+* Create a project if necessary, provisioning an object storage service if required.
+* In the `Assets` tab, select the `Create notebook` option.
+* Select the `From URL` tab.
+* Enter a name for the notebook.
+* Optionally, enter a description for the notebook.
+* Enter this Notebook URL: https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/notebooks/watson_iotfailure_prediction.ipynb
+* Select the free Anaconda runtime.
+* Click the `Create` button.
+
+#### Import the Node-RED flow
+
+* [Clone this repo](https://github.com/IBM/iot-edge-predictive-models-dsx).
+* Navigate to the [orchestrate_dsx_workflow.json](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/node-red-flow/orchestrate_dsx_workflow.json).
+* Open the file with a text editor and copy the contents to Clipboard.
+* On the Node-RED flow editor, click the Menu and select `Import` -> `Clipboard` and paste the contents.
+
+ ![](doc/source/images/import_nodered_flow.png)
+ <br/>
+ <br/>
+
+#### Deploy the Node-RED flow by clicking on the `Deploy` button
+
+![](doc/source/images/deploy_nodered_flow.png)
+
+#### Note the websocket URL
+
+![](doc/source/images/note_websocket_url.png)
+
+The websocket URL is ws://`<NODERED_BASE_URL>`/ws/orchestrate  where the `NODERED_BASE_URL` is the marked portion of the URL in the above image.
+### Note:
+An example websocket URL for a Node-RED app with name `myApp` is `ws://myApp.mybluemix.net/ws/orchestrate`, where `myApp.mybluemix.net` is the `NODERED_BASE_URL`.
+
+The `NODERED_BASE_URL` may have additional region information i.e. `eu-gb` for the UK region. In this case `NODERED_BASE_URL` would be: `myApp.eu-gb.mybluemix.net`.
+
+## 6.2 Configure Node-RED on Raspberry Pi
+
+### 6.21 Copy the data file to Raspberry Pi and start Node-RED
+
+The data file can be found at the location - https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/data. Using ftp the file `iot_sensor_dataset.csv` is transferred to the Pi. The file is stored at the location `/home/pi`. After that Node-RED is started by running the command `node-red`.
+
+### Configure Node-RED on the Raspberry Pi
+
+* Navigate to the [orchestrate_dsx_workflow.json](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/node-red-flow/pi_flow.json).
+* Open the file with a text editor and copy the contents to Clipboard.
+* Access Node-RED using the IP address of the RaspberryPi as shown below.
+* On the Node-RED flow editor, click the Menu and select `Import` -> `Clipboard` and paste the contents.
+
+* Click on the `event` node.
+* Configure the device credentials noted earlier.
+
+* Click on the `all commands` node. Select the credentials configured in the previous step.
+* Click on `Deploy` to deploy the Node-RED flow.
 
 
 
