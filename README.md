@@ -74,12 +74,19 @@ This pattern uses [Node-RED](https://nodered.org/) at both device and cloud for 
 
 ### 6.11 Internet of Things Platform
 * Click on [Internet of Things Platform](https://console.bluemix.net/catalog/services/internet-of-things-platform) and create an instance of Internet of Things Platform. 
+![png](doc/images/create_wiot.png)  
+
 * Click on `Launch` to launch the `Dashboard`
+![png](doc/images/launch_wiot.png)  
+
 * Create a device type `Equipment` and device `Sensors`.
 Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-started.html#getting-started-with-iotp) and [article](https://developer.ibm.com/recipes/tutorials/how-to-register-devices-in-ibm-iot-foundation/).
+![png](doc/images/note_device_credentials.png)  
+
 * Note down the device credentials. They cannot be retrieved later.
 > The device credentials will be used later to configure Node-RED.
-* Click on `Apps`.
+
+* Click on `Apps` on the menu.
 * Click on `Generate API Key`. Select the role as `Data processor application`. Make a note of the `API Key` and `Authentication Token`. This will be needed in the Node-RED flow configuration in the subsequent steps.
 
 
@@ -87,13 +94,18 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 * Create a [DB2 Warehouse](https://console.bluemix.net/catalog/services/db2-warehouse) instance.
 > Make a note of the service name. This needs to be bound to Node-RED that is created in the next step.
 * Click on `Service Credentials`. Click on `New Credential`. Click on `View Credentials`.
+![png](doc/images/DB2_credentials.png)  
 > Make a note of the database credentials to be entered into Watson Studio notebook later.
+
 * Click on `Manage`
 * Click on `Open` to launch the `Dashboard`
 * Click on `Explore`.
 * Click on the schema starting with `DASH`. 
+![png](doc/images/click_explore_schema_db.png)  
 > Make a note of the schema name to be configured later on Watson Studio.
+
 * Click on `New Table` and create a table with the configuration as shown.
+![png](doc/images/table_definition.png)  
 
 ### 6.13 Node-RED on IBM Cloud
 * Create the [Node-RED Starter application](https://console.bluemix.net/catalog/starters/node-red-starter).
@@ -121,12 +133,15 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 * Open the file with a text editor and copy the contents to Clipboard.
 * On the Node-RED flow editor, click the Menu and select `Import` -> `Clipboard` and paste the contents.
 
- ![](doc/source/images/import_nodered_flow.png)
+ ![](doc/source/images/ibm_cloud_node_red_flow.png)
  <br/>
  <br/>
 
 * On the two DB2 nodes named `EQUIPMENT_DATA`. Select the DB2 Warehouse service.
-* Configure the two IoT nodes with the API Key and Authentication Token.
+![png](doc/images/dash_db_out_node.png)  
+
+* Configure the two IoT nodes with the API Key and Authentication Token. Click on `Edit` icon shown in the image and enter the `API Key` and `Authentication Token` noted earlier.
+![png](doc/images/configure_api_key.png)  
 
 #### Deploy the Node-RED flow by clicking on the `Deploy` button
 
@@ -153,13 +168,20 @@ The `NODERED_BASE_URL` may have additional region information i.e. `eu-gb` for t
 * Select the free Anaconda runtime.
 * Click the `Create` button.
 * In Section 7. of the notebook, enter the websocket URL noted earlier.
+![png](doc/images/change_websocket_url_notebook.png)  
+
 * In Section 4. of the notebook, enter the database credentials for DB2 Warehouse noted earlier.
+
 
 ## 6.2 Configure Node-RED on Raspberry Pi
 
 ### 6.21 Copy the data file to Raspberry Pi and start Node-RED
 
 The data file can be found at the location - https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/data. Using ftp the file `iot_sensor_dataset.csv` is transferred to the Pi. The file is stored at the location `/home/pi`. After that Node-RED is started by running the command `node-red`.
+
+![png](doc/images/ftp_data-pi.png)  
+
+![png](doc/images/start_node_red_pi.png)  
 
 ### Configure Node-RED on the Raspberry Pi
 
@@ -168,13 +190,19 @@ The data file can be found at the location - https://github.com/IBM/iot-edge-pre
 * Access Node-RED using the IP address of the RaspberryPi as shown below.
 * On the Node-RED flow editor, click the Menu and select `Import` -> `Clipboard` and paste the contents.
 * Click on the `event` node.
+![png](doc/images/click_watson_iot_node.png)  
+
 * Configure the device credentials noted earlier.
+![png](doc/images/enter_device-credentials.png)  
 
 * Click on the `all commands` node. Select the credentials configured in the previous step.
+![png](doc/images/click_watson_iot_commands_node.png)  
+
 * Click on `Deploy` to deploy the Node-RED flow.
 
-# Run the Node-RED flow on Raspberry Pi
+# Trigger the Node-RED flow on Raspberry Pi
 Click on the inject node `Sensor event trigger`. This will send sensor events to the Watson IoT Platform. These events will get stored in the DB2 Warehouse.
+![png](doc/images/click_sensor_trigger_node.png)  
 
 ## 8. Run the notebook
 
@@ -209,7 +237,7 @@ The websocket client will be started when you run the cell under `7. Start webso
 Go to the Node-RED flow on the Raspberry Pi.
 Click on the inject node `Event - Running`. This sends an event with values indicating a good health to the Watson IoT Platform.
 Click on the inject node `Event - Failing`. This sends an event with values indicating a failing health to the Watson IoT Platform. A shutdown command is received from the Watson IoT platform after running of the predictive model.
-  
+![png](doc/images/simulate_shutdown-condition.png)  
 
 # 8	Troubleshooting  
 See [Debugging.md](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/DEBUGGING.md)  
