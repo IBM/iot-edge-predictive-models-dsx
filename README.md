@@ -202,7 +202,7 @@ The data file can be found at the location - https://github.com/IBM/iot-edge-pre
 
 * Click on `Deploy` to deploy the Node-RED flow.
 
-# Trigger the Node-RED flow on Raspberry Pi
+# 7. Trigger the Node-RED flow on Raspberry Pi
 Click on the inject node `Sensor event trigger`. This will send sensor events to the Watson IoT Platform. These events will get stored in the DB2 Warehouse.
 ![png](doc/images/click_sensor_trigger_node.png)  
 
@@ -241,18 +241,9 @@ Click on the inject node `Event - Running`. This sends an event with values indi
 Click on the inject node `Event - Failing`. This sends an event with values indicating a failing health to the Watson IoT Platform. A shutdown command is received from the Watson IoT platform after running of the predictive model.
 ![png](doc/images/simulate_shutdown-condition.png)  
 
-# 8	Troubleshooting  
+# 10.	Troubleshooting  
 See [Debugging.md](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/DEBUGGING.md)  
   
-# 9	License  
+# 11.	License  
 See [Apache 2.0](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/LICENSE)  
-    
-# 10	Further enhancements  
-
-The following areas are suggested as further enhancement areas for a User to explore by self.  
-These are consciously been omitted from this IBM Code pattern as thse will require additional  
-hardware and knowledge of basic electronics  
-
-* Inputs from Raspberry Pi GPIO pins can be used for reading temperature from a external Temperature sensor attached  
-* Outputs to Raspberry Pi GPIO pins can be used for triggering action by external actuators  
-
+   
