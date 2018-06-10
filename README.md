@@ -165,8 +165,10 @@ The `NODERED_BASE_URL` may have additional region information i.e. `eu-gb` for t
 * Enter a name for the notebook.
 * Optionally, enter a description for the notebook.
 * Enter this Notebook URL: https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/notebooks/watson_iotfailure_prediction.ipynb
-* Select the free Anaconda runtime.
+* Select the free runtime.
 * Click the `Create` button.
+![png](doc/images/create_notebook.png)  
+
 * In Section 7. of the notebook, enter the websocket URL noted earlier.
 ![png](doc/images/change_websocket_url_notebook.png)  
 
