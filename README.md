@@ -173,7 +173,7 @@ The `NODERED_BASE_URL` may have additional region information i.e. `eu-gb` for t
 ![png](doc/images/change_websocket_url_notebook.png)  
 
 * In Section 4. of the notebook, enter the database credentials for DB2 Warehouse noted earlier.
-
+![png](doc/images/modify_db_credentials.png)  
 
 ## 6.2 Configure Node-RED on Raspberry Pi
 
