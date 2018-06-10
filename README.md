@@ -164,7 +164,7 @@ The `NODERED_BASE_URL` may have additional region information i.e. `eu-gb` for t
 * Select the `From URL` tab.
 * Enter a name for the notebook.
 * Optionally, enter a description for the notebook.
-* Enter this Notebook URL: https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/notebooks/watson_iotfailure_prediction.ipynb
+* Enter this Notebook URL: https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/notebooks/watson_iotfailure_prediction_integrated.ipynb
 * Select the free runtime.
 * Click the `Create` button.
 ![png](doc/images/create_notebook.png)  
