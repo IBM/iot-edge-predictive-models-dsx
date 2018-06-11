@@ -9,15 +9,15 @@ The end to end process steps for applying Analytics on IoT data are listed below
 4.	Sending decisions based on Analytics insights to the edge for automated action
  
 The below two code patterns cover statistical change point detection and predicting equipment failure using IoT sensor data.
-* [Detect change points in IoT sensor data - Overview](https://developer.ibm.com/code/patterns/detect-change-points-in-iot-sensor-data/)  
-* [Predict equipment failure using IoT sensor data - Overview](https://developer.ibm.com/code/patterns/predict-equipment-failure-using-iot-sensor-data/)
+* [Detect change points in IoT sensor data](https://developer.ibm.com/code/patterns/detect-change-points-in-iot-sensor-data/)  
+* [Predict equipment failure using IoT sensor data](https://developer.ibm.com/code/patterns/predict-equipment-failure-using-iot-sensor-data/)
 
 This IBM Code Pattern is a composite pattern that demostrates the building of complete IoT analytics solution.
 When you complete this code pattern, you will learn how to:
 * Send events from an edge device (we use Raspberry Pi for demonstration) to the Watson IoT Platform
 * Store the events in a DB2 database on IBM Cloud
 * Invoke a predictive model on Watson Studio for IoT events using the below code patterns:
-   - [Predict equipment failure using IoT sensor data - Overview](https://developer.ibm.com/code/patterns/predict-equipment-failure-using-iot-sensor-data/)
+   - [Predict equipment failure using IoT sensor data](https://developer.ibm.com/code/patterns/predict-equipment-failure-using-iot-sensor-data/)
   - [Orchestrate data science workflows using Node-RED](https://github.com/IBM/node-red-dsx-workflow)
 * Send a command back to the edge (we use Raspberry Pi for demonstration) based on the outcome of the predictive model
 
