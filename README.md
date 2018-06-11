@@ -185,11 +185,11 @@ The data file can be found at the location - https://github.com/IBM/iot-edge-pre
 
 #### 6.22 Configure Node-RED on the Raspberry Pi
 
-* Navigate to the [orchestrate_dsx_workflow.json](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/node-red-flow/pi_flow.json).
+* Navigate to the [pi_flow.json](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/node-red-flow/pi_flow.json).
 * Open the file with a text editor and copy the contents to Clipboard.
 * Access Node-RED using the IP address of the RaspberryPi as shown below.
 * On the Node-RED flow editor, click the Menu and select `Import` -> `Clipboard` and paste the contents.
-![](doc/source/images/click_node_red_import_menu.png)
+![png](doc/source/images/click_node_red_import_menu.png)
 
 * Click on the `event` node.
 ![png](doc/images/click_watson_iot_node.png)  
