@@ -140,7 +140,7 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 ##### Import the Node-RED flow
 
 * [Clone this repo](https://github.com/IBM/iot-edge-predictive-models-dsx).
-* Navigate to the [orchestrate_dsx_workflow.json](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/node-red-flow/orchestrate_dsx_workflow.json).
+* Navigate to the [orchestrate_dsx_workflow.json](node-red-flow/orchestrate_dsx_workflow.json).
 * Open the file with a text editor and copy the contents to Clipboard.
 * On the Node-RED flow editor, click the Menu and select `Import` -> `Clipboard` and paste the contents.
 ![png](doc/images/click_node_red_import_menu.png)
@@ -190,7 +190,7 @@ The `NODERED_BASE_URL` may have additional region information i.e. `eu-gb` for t
 * In Section 4. of the notebook, enter the database credentials for DB2 Warehouse noted earlier.
 ![png](doc/images/modify_db_credentials.png)  
 
-### 2.Configure Raspberry Pi
+### 2. Configure Raspberry Pi
 
 #### Copy the data file to Raspberry Pi and start Node-RED
 
@@ -202,7 +202,7 @@ The data file can be found at the location - https://github.com/IBM/iot-edge-pre
 
 #### Configure Node-RED on the Raspberry Pi
 
-* Navigate to the [pi_flow.json](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/node-red-flow/pi_flow.json).
+* Navigate to the [pi_flow.json](node-red-flow/pi_flow.json).
 * Open the file with a text editor and copy the contents to Clipboard.
 * Access Node-RED using the IP address of the RaspberryPi as shown below.
 * On the Node-RED flow editor, click the Menu and select `Import` -> `Clipboard` and paste the contents.
