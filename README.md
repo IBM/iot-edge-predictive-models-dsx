@@ -194,7 +194,7 @@ The `NODERED_BASE_URL` may have additional region information i.e. `eu-gb` for t
 
 The data file can be found at the location - https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/data. Using ftp the file `iot_sensor_dataset.csv` is transferred to the Pi. The file is stored at the location `/home/pi`. After that Node-RED is started by running the command `node-red`.
 
-![png](doc/images/ftp_data-pi.png)  
+![png](doc/images/ftp_data_pi.png)  
 
 ![png](doc/images/start_node_red_pi.png)  
 
