@@ -69,7 +69,7 @@ This pattern uses [Node-RED](https://nodered.org/) at both device and cloud for 
 ## Steps  
 
 1. [Create IBM Cloud services and configure](#1-create-ibm-cloud-services-and-configure)
-2. [Configure Node-RED on Raspberry Pi](#2-configure-node-red-on-raspberry-pi)
+2. [Configure Raspberry Pi](#2-configure-raspberry-pi)
 3. [Trigger the Node-RED flow on Raspberry Pi](#3-trigger-the-node-red-flow-on-raspberry-pi)
 4. [Run the notebook](#4-run-the-notebook)
 5. [Analyze results](#5-analyze-results)
@@ -124,7 +124,7 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 * Choose an appropriate name for the Node-RED application - `App name:`.
 * Click on `Create`.
 
-  ![png](doc/source/images/bluemix_service_nodered.png)
+  ![png](doc/images/bluemix_service_nodered.png)
 
 * On the newly created Node-RED application page, click on `Connections`.
 * Click on `Create Connection` and select the DB2 Warehouse service that was created in the previous step. Click on `Connect`.
@@ -143,10 +143,10 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 * Navigate to the [orchestrate_dsx_workflow.json](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/node-red-flow/orchestrate_dsx_workflow.json).
 * Open the file with a text editor and copy the contents to Clipboard.
 * On the Node-RED flow editor, click the Menu and select `Import` -> `Clipboard` and paste the contents.
-![png](doc/source/images/click_node_red_import_menu.png)
+![png](doc/images/click_node_red_import_menu.png)
 
 The imported Node-RED flow appears on the editor.
-![png](doc/source/images/ibm_cloud_node_red_flow.png)
+![png](doc/images/ibm_cloud_node_red_flow.png)
  <br/>
  <br/>
 * On the two DB2 nodes named `EQUIPMENT_DATA`. Select the DB2 Warehouse service.
@@ -160,11 +160,11 @@ Enter the `API Key` and `Authentication Token` noted earlier.
 
 ##### Deploy the Node-RED flow by clicking on the `Deploy` button
 
-![png](doc/source/images/deploy_nodered_flow.png)
+![png](doc/images/deploy_nodered_flow.png)
 
 ##### Note the websocket URL
 
-![png](doc/source/images/note_websocket_url.png)
+![png](doc/images/note_websocket_url.png)
 
 The websocket URL is ws://`<NODERED_BASE_URL>`/ws/orchestrate  where the `NODERED_BASE_URL` is the marked portion of the URL in the above image.
 ### Note:
@@ -190,7 +190,7 @@ The `NODERED_BASE_URL` may have additional region information i.e. `eu-gb` for t
 * In Section 4. of the notebook, enter the database credentials for DB2 Warehouse noted earlier.
 ![png](doc/images/modify_db_credentials.png)  
 
-### 2.Configure Node-RED on Raspberry Pi
+### 2.Configure Raspberry Pi
 
 #### Copy the data file to Raspberry Pi and start Node-RED
 
