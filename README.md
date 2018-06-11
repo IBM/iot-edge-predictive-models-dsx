@@ -4,14 +4,10 @@ Internet of Things (IoT) have evolved tremendously in all spheres of our lives l
 
 The end to end process steps for applying Analytics on IoT data are listed below:
 1.	Collect IoT data from sensor
-2.	Change point detection using IoT Sensor data
-3.	Predicting equipment failure using IoT Sensor data
+2.	Change point detection using IoT Sensor data (Refer code pattern - [Detect change points in IoT sensor data](https://developer.ibm.com/code/patterns/detect-change-points-in-iot-sensor-data/))
+3.	Predicting equipment failure using IoT Sensor data (Refer code pattern - [Predict equipment failure using IoT sensor data](https://developer.ibm.com/code/patterns/predict-equipment-failure-using-iot-sensor-data/))
 4.	Sending decisions based on Analytics insights to the edge for automated action
  
-The below two code patterns cover statistical change point detection and predicting equipment failure using IoT sensor data.
-* [Detect change points in IoT sensor data](https://developer.ibm.com/code/patterns/detect-change-points-in-iot-sensor-data/)  
-* [Predict equipment failure using IoT sensor data](https://developer.ibm.com/code/patterns/predict-equipment-failure-using-iot-sensor-data/)
-
 This IBM Code Pattern is a composite pattern that demostrates the building of complete IoT analytics solution.
 When you complete this code pattern, you will learn how to:
 * Send events from an edge device (we use Raspberry Pi for demonstration) to the Watson IoT Platform
