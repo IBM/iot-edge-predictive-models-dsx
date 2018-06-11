@@ -92,6 +92,7 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 
 #### 6.12 DB2 Warehouse
 * Create a [DB2 Warehouse](https://console.bluemix.net/catalog/services/db2-warehouse) instance.
+![png](doc/images/create_db2_warehouse.png)
 > Make a note of the service name. This needs to be bound to Node-RED that is created in the next step.
 * Click on `Service Credentials`. Click on `New Credential`. Click on `View Credentials`.
 ![png](doc/images/DB2_credentials.png)  
@@ -140,6 +141,8 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 
 * Configure the two IoT nodes with the API Key and Authentication Token. Click on `Edit` icon shown in the image and enter the `API Key` and `Authentication Token` noted earlier.
 ![png](doc/images/configure_api_key.png)  
+
+![png](doc/images/enter_api_key_details.png)  
 
 ##### Deploy the Node-RED flow by clicking on the `Deploy` button
 
