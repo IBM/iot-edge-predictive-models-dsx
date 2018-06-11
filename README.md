@@ -27,11 +27,11 @@ This pattern uses [Node-RED](https://nodered.org/) at both device and cloud for 
 - Invoke predictive model on Watson Studio and get a response back for an IoT event
 - Send a command back to the Raspberry Pi through the Watson IoT platform
   
-## 1. Prerequisites: 
+## Prerequisites: 
 * [Connect Raspberry Pi to the network and Note IP address for accessing the Pi](https://www.raspberrypi.org/documentation/)
 * [Running Node-RED on Raspberry Pi](https://nodered.org/docs/hardware/raspberrypi)  
 
-## 2. Flow
+## Flow
 ![png](doc/images/iea_arch_flow.png)  
 
 1.	The Raspberry Pi gets events from the sensors. In the absence of sensors, the sensor events are read from a file. 
@@ -43,7 +43,7 @@ This pattern uses [Node-RED](https://nodered.org/) at both device and cloud for 
 7.	Based on the outcome, the Node-RED flow sends a command with the action to be taken to the edge device(Raspberry Pi) through the Watson IoT platform  
 8.	The Node-RED flow on Raspberry Pi recieve the command 
   
-## 3. Included Components 
+## Included Components 
 * [IBM Cloud](https://console.bluemix.net/catalog/): IBM's innovative cloud computing platform or IBM Cloud (formerly Bluemix) combines   
   platform as a service (PaaS) with infrastructure as a service (IaaS) and includes a rich catalog of  
   cloud services that can be easily integrated with PaaS and IaaS to build business applications rapidly.  
@@ -55,24 +55,28 @@ This pattern uses [Node-RED](https://nodered.org/) at both device and cloud for 
   and RStudio in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.  
 * [DB2 Warehouse](https://console.bluemix.net/catalog/services/db2-warehouse): IBM Db2 Warehouse on Cloud is a fully-managed, enterprise-class, cloud data warehouse service.
 
-## 4.	Featured Technologies
+## Featured Technologies
 
 * [Analytics](https://developer.ibm.com/code/technologies/analytics?cm=IBMCode-_--_-featured_technologies-_-analytics): Finding patterns in data to derive information.  
 * [Data Science](https://developer.ibm.com/code/technologies/data-science?cm=IBMCode-_--_-featured_technologies-_-data-science): Systems and scientific methods to analyze structured and unstructured data in  
   order to extract knowledge and insights.  
 * [Internet of Things](https://en.wikipedia.org/wiki/Internet_of_things)
 
-## 5.	Watch the Video  
+## Watch the Video  
 
 * [Video](https://youtu.be/2CJcqMPIFaY)  
   
-## 6.	Steps  
+## Steps  
 
-1.	[Create IBM Cloud services and configure](#6.1-create-ibm-cloud-services-and-configure)
-  
-### 6.1	Create IBM Cloud services and configure
+1. [Create IBM Cloud services and configure](#1-create-ibm-cloud-services-and-configure)
+2. [Configure Node-RED on Raspberry Pi](#2-configure-node-red-on-raspberry-pi)
+3. [Trigger the Node-RED flow on Raspberry Pi](#3-trigger-the-node-red-flow-on-raspberry-pi)
+4. [Run the notebook](#4-run-the-notebook)
+5. [Analyze results](#5-analyze-results)
+ 
+### 1. Create IBM Cloud services and configure
 
-#### 6.11 Internet of Things Platform
+#### Internet of Things Platform
 * Click on [Internet of Things Platform](https://console.bluemix.net/catalog/services/internet-of-things-platform) and create an instance of Internet of Things Platform. 
 ![png](doc/images/create_wiot.png)  
 
@@ -89,14 +93,15 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 * Click on `Apps` on the menu.
 ![png](doc/images/click_apps_generate_api_key.png)  
 
-* Click on `Generate API Key`. Select the role as `Data processor application`. 
+* Click on `Generate API Key`. Click `Next`.
+* Select the role as `Data processor application`. 
 ![png](doc/images/select_role_data_processor.png)  
 
 * Make a note of the `API Key` and `Authentication Token`. This will be needed in the Node-RED flow configuration in the subsequent steps.
 ![png](doc/images/note_api_key.png)  
 
 
-#### 6.12 DB2 Warehouse
+#### DB2 Warehouse
 * Create a [DB2 Warehouse](https://console.bluemix.net/catalog/services/db2-warehouse) instance.
 ![png](doc/images/create_db2_warehouse.png)
 > Make a note of the service name. This needs to be bound to Node-RED that is created in the next step.
@@ -114,7 +119,7 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 * Click on `New Table` and create a table with the configuration as shown.
 ![png](doc/images/table_definition.png)  
 
-#### 6.13 Node-RED on IBM Cloud
+#### Node-RED on IBM Cloud
 * Create the [Node-RED Starter application](https://console.bluemix.net/catalog/starters/node-red-starter).
 * Choose an appropriate name for the Node-RED application - `App name:`.
 * Click on `Create`.
@@ -167,7 +172,7 @@ An example websocket URL for a Node-RED app with name `myApp` is `ws://myApp.myb
 
 The `NODERED_BASE_URL` may have additional region information i.e. `eu-gb` for the UK region. In this case `NODERED_BASE_URL` would be: `myApp.eu-gb.mybluemix.net`.
 
-#### 6.14 Watson Studio
+#### Watson Studio
 * Sign up for IBM's [Watson Studio](https://dataplatform.ibm.com/).
 * Create a project if necessary, provisioning an object storage service if required.
 * In the `Assets` tab, select the `Create notebook` option.
@@ -185,9 +190,9 @@ The `NODERED_BASE_URL` may have additional region information i.e. `eu-gb` for t
 * In Section 4. of the notebook, enter the database credentials for DB2 Warehouse noted earlier.
 ![png](doc/images/modify_db_credentials.png)  
 
-### 6.2 Configure Node-RED on Raspberry Pi
+### 2.Configure Node-RED on Raspberry Pi
 
-#### 6.21 Copy the data file to Raspberry Pi and start Node-RED
+#### Copy the data file to Raspberry Pi and start Node-RED
 
 The data file can be found at the location - https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/data. Using ftp the file `iot_sensor_dataset.csv` is transferred to the Pi. The file is stored at the location `/home/pi`. After that Node-RED is started by running the command `node-red`.
 
@@ -195,7 +200,7 @@ The data file can be found at the location - https://github.com/IBM/iot-edge-pre
 
 ![png](doc/images/start_node_red_pi.png)  
 
-#### 6.22 Configure Node-RED on the Raspberry Pi
+#### Configure Node-RED on the Raspberry Pi
 
 * Navigate to the [pi_flow.json](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/node-red-flow/pi_flow.json).
 * Open the file with a text editor and copy the contents to Clipboard.
@@ -214,11 +219,11 @@ The data file can be found at the location - https://github.com/IBM/iot-edge-pre
 
 * Click on `Deploy` to deploy the Node-RED flow.
 
-## 7. Trigger the Node-RED flow on Raspberry Pi
+## 3. Trigger the Node-RED flow on Raspberry Pi
 Click on the inject node `Sensor event trigger`. This will send sensor events to the Watson IoT Platform. These events will get stored in the DB2 Warehouse.
 ![png](doc/images/click_sensor_trigger_event.png)  
 
-## 8. Run the notebook
+## 4. Run the notebook
 
 When a notebook is executed, what is actually happening is that each code cell in
 the notebook is executed, in order, from top to bottom.
@@ -247,15 +252,15 @@ There are several ways to execute the code cells in your notebook:
 For this Notebook, you can simply `Run All` cells.
 The websocket client will be started when you run the cell under `7. Start websocket client`. This will start the communication between the UI and the Notebook.
 
-## 9 Analyze results
+## 5. Analyze results
 Go to the Node-RED flow on the Raspberry Pi.
 Click on the inject node `Event - Running`. This sends an event with values indicating a good health to the Watson IoT Platform.
 Click on the inject node `Event - Failing`. This sends an event with values indicating a failing health to the Watson IoT Platform. A shutdown command is received from the Watson IoT platform after running of the predictive model.
 ![png](doc/images/simulate_shutdown-condition.png)  
 
-## 10.	Troubleshooting  
+## 6.	Troubleshooting  
 See [Debugging.md](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/DEBUGGING.md)  
   
-## 11.	License  
+## 7.	License  
 See [Apache 2.0](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/LICENSE)  
    
