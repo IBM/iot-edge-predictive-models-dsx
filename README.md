@@ -1,4 +1,4 @@
-#  IoT analytics using predictive models and integration with edge device 
+#  IoT analytics using predictive models and integration with edge devices 
 
 Internet of Things (IoT) have evolved tremendously in all spheres of our lives like Industrial applications, Social interactions, Remote management of facilities and equipment to name a few. In general application areas, IoT data collected by Sensors can be used for monitoring as well as predicting the outcomes. If any deviation from the norm is detected, corrective action can be  prescribed either manually or by an automated process. Such actions may come out of rule based anomaly detection or a Statistical Change point detection or a Predictive model that predicts a faulty condition ahead of time. This approach goes a long way in implementing Predictive maintenance which is more prudent approach than Scheduled Preventive maintenance which is periodic in nature. 
 
