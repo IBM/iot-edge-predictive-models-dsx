@@ -87,7 +87,13 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 > The device credentials will be used later to configure Node-RED.
 
 * Click on `Apps` on the menu.
-* Click on `Generate API Key`. Select the role as `Data processor application`. Make a note of the `API Key` and `Authentication Token`. This will be needed in the Node-RED flow configuration in the subsequent steps.
+![png](doc/images/click_apps_generate_api_key.png)  
+
+* Click on `Generate API Key`. Select the role as `Data processor application`. 
+![png](doc/images/select_role_data_processor.png)  
+
+* Make a note of the `API Key` and `Authentication Token`. This will be needed in the Node-RED flow configuration in the subsequent steps.
+![png](doc/images/note_api_key.png)  
 
 
 #### 6.12 DB2 Warehouse
@@ -113,7 +119,7 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 * Choose an appropriate name for the Node-RED application - `App name:`.
 * Click on `Create`.
 
-  ![](doc/source/images/bluemix_service_nodered.png)
+  ![png](doc/source/images/bluemix_service_nodered.png)
 
 * On the newly created Node-RED application page, click on `Connections`.
 * Click on `Create Connection` and select the DB2 Warehouse service that was created in the previous step. Click on `Connect`.
@@ -132,25 +138,28 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 * Navigate to the [orchestrate_dsx_workflow.json](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/node-red-flow/orchestrate_dsx_workflow.json).
 * Open the file with a text editor and copy the contents to Clipboard.
 * On the Node-RED flow editor, click the Menu and select `Import` -> `Clipboard` and paste the contents.
-![](doc/source/images/click_node_red_import_menu.png)
-![](doc/source/images/ibm_cloud_node_red_flow.png)
+![png](doc/source/images/click_node_red_import_menu.png)
+
+The imported Node-RED flow appears on the editor.
+![png](doc/source/images/ibm_cloud_node_red_flow.png)
  <br/>
  <br/>
 * On the two DB2 nodes named `EQUIPMENT_DATA`. Select the DB2 Warehouse service.
 ![png](doc/images/dash_db_out_node.png)  
 
-* Configure the two IoT nodes with the API Key and Authentication Token. Click on `Edit` icon shown in the image and enter the `API Key` and `Authentication Token` noted earlier.
+* Configure the two IoT nodes with the API Key and Authentication Token. Click on `Edit` icon shown in the image. 
 ![png](doc/images/configure_api_key.png)  
 
+Enter the `API Key` and `Authentication Token` noted earlier.
 ![png](doc/images/enter_api_key_details.png)  
 
 ##### Deploy the Node-RED flow by clicking on the `Deploy` button
 
-![](doc/source/images/deploy_nodered_flow.png)
+![png](doc/source/images/deploy_nodered_flow.png)
 
 ##### Note the websocket URL
 
-![](doc/source/images/note_websocket_url.png)
+![png](doc/source/images/note_websocket_url.png)
 
 The websocket URL is ws://`<NODERED_BASE_URL>`/ws/orchestrate  where the `NODERED_BASE_URL` is the marked portion of the URL in the above image.
 ### Note:
@@ -192,7 +201,7 @@ The data file can be found at the location - https://github.com/IBM/iot-edge-pre
 * Open the file with a text editor and copy the contents to Clipboard.
 * Access Node-RED using the IP address of the RaspberryPi as shown below.
 * On the Node-RED flow editor, click the Menu and select `Import` -> `Clipboard` and paste the contents.
-![png](doc/source/images/click_node_red_import_menu.png)
+![png](doc/images/click_node_red_import_menu.png)
 
 * Click on the `event` node.
 ![png](doc/images/click_watson_iot_node.png)  
@@ -207,7 +216,7 @@ The data file can be found at the location - https://github.com/IBM/iot-edge-pre
 
 ## 7. Trigger the Node-RED flow on Raspberry Pi
 Click on the inject node `Sensor event trigger`. This will send sensor events to the Watson IoT Platform. These events will get stored in the DB2 Warehouse.
-![png](doc/images/click_sensor_trigger_node.png)  
+![png](doc/images/click_sensor_trigger_event.png)  
 
 ## 8. Run the notebook
 
