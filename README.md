@@ -131,11 +131,10 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 * Navigate to the [orchestrate_dsx_workflow.json](https://github.com/IBM/iot-edge-predictive-models-dsx/blob/master/node-red-flow/orchestrate_dsx_workflow.json).
 * Open the file with a text editor and copy the contents to Clipboard.
 * On the Node-RED flow editor, click the Menu and select `Import` -> `Clipboard` and paste the contents.
-
- ![](doc/source/images/ibm_cloud_node_red_flow.png)
+![](doc/source/images/click_node_red_import_menu.png)
+![](doc/source/images/ibm_cloud_node_red_flow.png)
  <br/>
  <br/>
-
 * On the two DB2 nodes named `EQUIPMENT_DATA`. Select the DB2 Warehouse service.
 ![png](doc/images/dash_db_out_node.png)  
 
@@ -190,6 +189,8 @@ The data file can be found at the location - https://github.com/IBM/iot-edge-pre
 * Open the file with a text editor and copy the contents to Clipboard.
 * Access Node-RED using the IP address of the RaspberryPi as shown below.
 * On the Node-RED flow editor, click the Menu and select `Import` -> `Clipboard` and paste the contents.
+![](doc/source/images/click_node_red_import_menu.png)
+
 * Click on the `event` node.
 ![png](doc/images/click_watson_iot_node.png)  
 
