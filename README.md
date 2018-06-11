@@ -24,7 +24,9 @@ This pattern uses a sample equipment sensors data. This data is sent to the Wats
 This pattern uses [Node-RED](https://nodered.org/) at both device and cloud for building the solution:
 - Implementing device client on Raspberry Pi to send events to Watson IoT platform
 - Consuming events from Watson IoT platform on IBM Cloud and storing the events in a DB2 database
-- Invoke predictive model on Watson Studio and get a response back for an IoT event
+- Invoke predictive model on Watson Studio and get a response back for an IoT event using the below code patterns:
+  - [Predict equipment failure using IoT sensor data - Overview](https://developer.ibm.com/code/patterns/predict-equipment-failure-using-iot-sensor-data/)
+  - [Orchestrate data science workflows using Node-RED](https://github.com/IBM/node-red-dsx-workflow)
 - Send a command back to the Raspberry Pi through the Watson IoT platform
   
 ## Prerequisites: 
