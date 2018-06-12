@@ -228,8 +228,8 @@ Click on the inject node `Sensor event trigger`. This will send sensor events to
 
 ## 4. Run the notebook
 > Note: Only after the previous step (3. Trigger the Node-RED flow on Raspberry Pi) is complete and all events are stored into the DB2 Warehouse, run the cells in the notebook. The data in the DB2 Warehouse is then used for building the model.
-When a notebook is executed, what is actually happening is that each code cell in
-the notebook is executed, in order, from top to bottom.
+
+When a notebook is executed, what is actually happening is that each code cell in the notebook is executed, in order, from top to bottom.
 
 Each code cell is selectable and is preceded by a tag in the left margin. The tag
 format is `In [x]:`. Depending on the state of the notebook, the `x` can be:
