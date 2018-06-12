@@ -152,7 +152,7 @@ The imported Node-RED flow appears on the editor.
 * Configure the two IoT nodes with the API Key and Authentication Token. Click on `Edit` icon shown in the image. 
 ![png](doc/images/configure_api_key.png)  
 
-Enter the `API Key` and `Authentication Token` noted earlier.
+* Enter the `API Key` and `Authentication Token` noted earlier.
 ![png](doc/images/enter_api_key_details.png)  
 
 ##### Deploy the Node-RED flow by clicking on the `Deploy` button
