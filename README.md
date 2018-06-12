@@ -125,8 +125,7 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
   ![png](doc/images/bluemix_service_nodered.png)
 
 * On the newly created Node-RED application page, click on `Connections`.
-* Click on `Create Connection` and select the DB2 Warehouse service that was created in the previous step. Click on `Connect`.
-> This binds the DB2 Warehouse service to Node-RED.
+* Click on `Create Connection` and select the DB2 Warehouse service that was created in the previous step. Click on `Connect`. This binds the DB2 Warehouse service to Node-RED.
 * Click on `Getting Started`.
 * Click on `Visit App URL` to launch the Node-RED editor once the application is in `Running` state.
 * On the `Welcome to your new Node-RED instance on IBM Cloud` screen, Click on `Next`.
