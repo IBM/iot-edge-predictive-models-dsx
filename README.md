@@ -114,7 +114,7 @@ Refer [documentation](https://console.bluemix.net/docs/services/IoT/getting-star
 ![png](doc/images/click_explore_schema_db.png)  
 > Make a note of the schema name to be configured later on Watson Studio.
 
-* Click on `New Table` and create a table with the configuration as shown.
+* Click on `New Table` and create a table `EQUIPMENT_DATA` with the configuration as shown.
 ![png](doc/images/table_definition.png)  
 
 #### Node-RED on IBM Cloud
