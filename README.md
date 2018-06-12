@@ -206,11 +206,11 @@ The data file can be found at the location - https://github.com/IBM/iot-edge-pre
 * Access Node-RED using the IP address of the RaspberryPi as shown below.
 * On the Node-RED flow editor, click the Menu and select `Import` -> `Clipboard` and paste the contents.
 ![png](doc/images/click_node_red_import_menu.png)
-<br/>
+
 The below flow will be imported into the Node-RED editor.
 ![png](doc/images/pi_flow.png)
+
 * Click on the `event` node.
-<br/>
 ![png](doc/images/click_watson_iot_node.png)  
 
 * Configure the device credentials noted earlier.
