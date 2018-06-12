@@ -211,6 +211,7 @@ The below flow will be imported into the Node-RED editor.
 ![png](doc/images/pi_flow.png)
 
 * Click on the `event` node.
+
 ![png](doc/images/click_watson_iot_node.png)  
 
 * Configure the device credentials noted earlier.
